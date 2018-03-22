@@ -16,8 +16,8 @@ function fill_form(csv){
         var field = Object.keys(fields)[i];
         // instantiate empty array for field
         field_options[field] = []
-        for(var j = 0, jmax = csv.data.length; j < jmax; j++){
-            value = csv.data[j][field];
+        for(var j = 0, jmax = csv.length; j < jmax; j++){
+            value = csv[j][field];
             // make sure value is not already in array (prevent duplicates)
             if(value && field_options[field].indexOf(value) < 0){
                 field_options[field].push(value);
@@ -96,14 +96,14 @@ function jsonify_form(form){
         }
     });
     
-    return obj
+    return obj;
 }
 
 // match current form item to item in csv
 function match_to_csv(form, csv){
-    for(var i = 0, imax = csv.data.length; i < imax; i++){
+    for(var i = 0, imax = csv.length; i < imax; i++){
         var is_match = true;
-        var row = csv.data[i];
+        var row = csv[i];
         
         // loop through form values
         for(var key in form){
@@ -117,21 +117,18 @@ function match_to_csv(form, csv){
         
         // all match
         if(is_match){
-            return row
+            return row;
         }
     }
     
-    return false
+    return false;
 }
 
 // on document load
 $(function(){
-    // fetch csv
-    Papa.parse("https://raw.githubusercontent.com/whitstd/opioid-worksheet/master/aggregate_opioid.csv", {
-        download: true,
-        header: true,
-        complete: function(csv){
-            fill_form(csv);
-        }
-    });
+    d3.csv('https://raw.githubusercontent.com/whitstd/opioid-worksheet/master/aggregate_opioid.csv', function(data){
+        return data; //promise
+    }).then(function(csv){
+        fill_form(csv);
+    })
 })
