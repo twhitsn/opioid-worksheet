@@ -6,7 +6,7 @@ Dr. Gabriel Brat
 
 ## Authors
 
-- Himani Bhat
+- Himani Bhatt
 - Felipe Lozano
 - Neha Rawat
 - Tim Whitson @whitstd
