@@ -2,39 +2,19 @@
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="index.css">
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous">
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.3.7/papaparse.js"></script>
     <script src="form.js"></script>
 </head>
 
 <body>
-
-<form>
-
-    Surgery Type
-    <div>
-        <select>
-            <option value="appendectomy">Appendectomy</option>
-        </select>
-    </div>
-    
-    <br><br>
-
-    Opioid Status
-    <div>
-        <input type="radio" name="opioid_status" value="naive" checked> Naive<br>
-        <input type="radio" name="opioid_status" value="exposed"> Exposed<br>
-        <input type="radio" name="opioid_status" value="misuse"> History of Misuse
-    </div>
-    
-    <br><br>
-    
-    History of Mental health Diagnosis
-    <div>
-        <input type="radio" name="mh_history" value="yes"> Yes<br>
-        <input type="radio" name="mh_history" value="no" checked> No<br>
-    </div>
-
-</form>
-
+    <form id="worksheet_input"></form>
+    <div id='worksheet'></div>
 </body>
 </html>

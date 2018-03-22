@@ -1,0 +1,24 @@
+/*************** PAGE ***************/
+
+#worksheet_input, #worksheet{
+    display: inline-block;
+    vertical-align: top;
+}
+
+#worksheet_input{
+    max-width: 24%;
+}
+
+#worksheet{
+    max-width: 75%;
+}
+
+/*************** FORM ***************/
+
+#worksheet_input label{
+    display: block;
+}
+
+#worksheet_input input[type=submit]{
+    margin-top: 50px;
+}
