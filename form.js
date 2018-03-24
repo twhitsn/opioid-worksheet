@@ -72,10 +72,9 @@ function fill_form(csv){
         var form_obj = jsonify_form($worksheet_input);
         var cur_csv_obj = match_to_csv(form_obj, csv);
         
-        console.log(cur_csv_obj);
-        
         if(cur_csv_obj){
             $worksheet.text(JSON.stringify(cur_csv_obj));
+            create_calendar(cur_csv_obj);
         } else{
             $worksheet.text('Not found');
         }
@@ -124,9 +123,53 @@ function match_to_csv(form, csv){
     return false;
 }
 
+function create_calendar(selection){ 
+    // calendar sizing
+    var width = 960,
+        height = 136,
+        cellSize = 17;
+
+    // create svg
+    var svg = d3.select('#worksheet')
+        .selectAll("svg")
+        .data([1]) // number of calendar items (years)
+        .enter().append("svg")
+            .attr("width", width)
+            .attr("height", height)
+        .append("g")
+            .attr("transform", "translate(" + ((width - cellSize * 53) / 2) + "," + (height - cellSize * 7 - 1) + ")")
+        
+    var rect = svg.append("g")
+            .attr("fill", "none")
+            .attr("stroke", "#ccc")
+        .selectAll("rect")
+        .data(function(d) { return d3.timeDays(new Date(d, 0, 1), new Date(d + 1, 0, 1)); })
+        .enter().append("rect")
+            .attr("width", cellSize)
+            .attr("height", cellSize)
+            .attr("x", function(d) { return d3.timeWeek.count(d3.timeYear(d), d) * cellSize; })
+            .attr("y", function(d) { return d.getDay() * cellSize; })
+            .datum(d3.timeFormat("%Y-%m-%d"));
+
+    svg.selectAll("rect")
+        .attr("fill", function(d, i, n){
+            if(i <= selection.median_taken){
+                return 'green';
+            } else if(i <= selection.q3_taken){
+                return 'yellow';
+            } else{
+                return 'red';
+            }
+        })
+}
+
 // on document load
 $(function(){
     d3.csv('https://raw.githubusercontent.com/whitstd/opioid-worksheet/master/aggregate_opioid.csv', function(data){
+        convert = ['n', 'median_taken', 'q1_taken', 'q3_taken', 'perc_pain_int', 'perc_refill'];
+        for(var i = 0, imax = convert.length; i < imax; i++){
+            data[convert[i]] = +data[convert[i]];
+        }
         return data; //promise
     }).then(function(csv){
         fill_form(csv);
