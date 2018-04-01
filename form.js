@@ -58,26 +58,34 @@ function fill_form(csv){
             }
         }
         
+        // prescription information
+        
+        $input_container.append('<input type="text">');
+        
         $worksheet_input.append($input_container);
     }
     
     // create submit button
-    $worksheet_input.append('<input type="submit" value="Submit">');
+    $worksheet_input.append('<button id="update_btn">Update</button>');
+    $worksheet_input.append('<button id="print_btn">Print</button>');
     
     // submit event
-    $worksheet_input.submit(function(evt){
+    $('#update_btn').click(function(evt){
         evt.preventDefault();
-        var $worksheet = $('#worksheet');
+        var $page1 = $('#page1');
         
         var form_obj = jsonify_form($worksheet_input);
         var cur_csv_obj = match_to_csv(form_obj, csv);
         
         if(cur_csv_obj){
-            $worksheet.text(JSON.stringify(cur_csv_obj));
+            console.log(JSON.stringify(cur_csv_obj));
             create_calendar(cur_csv_obj);
-        } else{
-            $worksheet.text('Not found');
         }
+    });
+    
+    $('#print_btn').click(function(evt){
+        evt.preventDefault();
+        window.print()
     });
 }
 
@@ -128,31 +136,34 @@ function create_calendar(selection){
     var width = 960,
         height = 136,
         cellSize = 17;
+        
+    // remove any previous elements
+    d3.select('#calendar').selectAll('svg').remove();
 
     // create svg
-    var svg = d3.select('#worksheet')
-        .selectAll("svg")
+    var svg = d3.select('#calendar')
+        .selectAll('svg')
         .data([1]) // number of calendar items (years)
-        .enter().append("svg")
-            .attr("width", width)
-            .attr("height", height)
-        .append("g")
-            .attr("transform", "translate(" + ((width - cellSize * 53) / 2) + "," + (height - cellSize * 7 - 1) + ")")
+        .enter().append('svg')
+            .attr('width', width)
+            .attr('height', height)
+        .append('g')
+            .attr('transform', 'translate(' + ((width - cellSize * 53) / 2) + ',' + (height - cellSize * 7 - 1) + ')')
         
-    var rect = svg.append("g")
-            .attr("fill", "none")
-            .attr("stroke", "#ccc")
-        .selectAll("rect")
+    var rect = svg.append('g')
+            .attr('fill', 'none')
+            .attr('stroke', '#ccc')
+        .selectAll('rect')
         .data(function(d) { return d3.timeDays(new Date(d, 0, 1), new Date(d + 1, 0, 1)); })
-        .enter().append("rect")
-            .attr("width", cellSize)
-            .attr("height", cellSize)
-            .attr("x", function(d) { return d3.timeWeek.count(d3.timeYear(d), d) * cellSize; })
-            .attr("y", function(d) { return d.getDay() * cellSize; })
-            .datum(d3.timeFormat("%Y-%m-%d"));
+        .enter().append('rect')
+            .attr('width', cellSize)
+            .attr('height', cellSize)
+            .attr('x', function(d) { return d3.timeWeek.count(d3.timeYear(d), d) * cellSize; })
+            .attr('y', function(d) { return d.getDay() * cellSize; })
+            .datum(d3.timeFormat('%Y-%m-%d'));
 
-    svg.selectAll("rect")
-        .attr("fill", function(d, i, n){
+    svg.selectAll('rect')
+        .attr('fill', function(d, i, n){
             if(i <= selection.median_taken){
                 return 'green';
             } else if(i <= selection.q3_taken){

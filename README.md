@@ -19,3 +19,4 @@ How will the information be served?
 
 - [ ] Make "approach" dependent upon surgery type in form
 - [ ] Save file as PDF
+- [ ] Error handling if incompatible fields are selected

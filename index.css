@@ -13,6 +13,12 @@
     max-width: 75%;
 }
 
+#page1, #page2{
+    width: 8.5in;
+    height: 11in;
+    border: 1px solid black;
+}
+
 /*************** FORM ***************/
 
 #worksheet_input label{
@@ -21,4 +27,37 @@
 
 #worksheet_input input[type=submit]{
     margin-top: 50px;
+}
+
+/*************** PRINT ***************/
+@media print{
+    @page {
+        size: letter;
+        margin: 0;
+        padding: 0;
+    }
+    
+    body *{
+        visibility: hidden;
+    }
+    
+    #worksheet, #worksheet *{
+        visibility: visible;
+    }
+    
+    #worksheet{
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    
+    #page1, #page2{
+        width: 8.5in;
+        height: 11in;
+    }
+}
+
+/*************** MISC ***************/
+.hide{
+    visibility: hidden;
 }
