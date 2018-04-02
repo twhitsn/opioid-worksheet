@@ -58,10 +58,6 @@ function fill_form(csv){
             }
         }
         
-        // prescription information
-        
-        $input_container.append('<input type="text">');
-        
         $worksheet_input.append($input_container);
     }
     
@@ -131,11 +127,15 @@ function match_to_csv(form, csv){
     return false;
 }
 
-function create_calendar(selection){ 
+function create_calendar(selection){
+    var cells_per_row = 21,
+        total_cells = Math.round(selection.q3_taken);
+
+    var page_width = $('#page1').width();
+
     // calendar sizing
-    var width = 960,
-        height = 136,
-        cellSize = 17;
+    var width = $('#page1').width(),
+        cell_size = page_width / cells_per_row;
         
     // remove any previous elements
     d3.select('#calendar').selectAll('svg').remove();
@@ -143,24 +143,20 @@ function create_calendar(selection){
     // create svg
     var svg = d3.select('#calendar')
         .selectAll('svg')
-        .data([1]) // number of calendar items (years)
+        .data([1]) // number of calendar items (years) FIXME: unnecessary
         .enter().append('svg')
-            .attr('width', width)
-            .attr('height', height)
-        .append('g')
-            .attr('transform', 'translate(' + ((width - cellSize * 53) / 2) + ',' + (height - cellSize * 7 - 1) + ')')
+            .attr('width', width);
         
     var rect = svg.append('g')
             .attr('fill', 'none')
-            .attr('stroke', '#ccc')
-        .selectAll('rect')
-        .data(function(d) { return d3.timeDays(new Date(d, 0, 1), new Date(d + 1, 0, 1)); })
+            .attr('stroke', '#fff')
+        .selectAll('rect') //FIXME: unnecessary
+        .data(function(d){ return Array.apply(null, {length: total_cells}).map(Number.call, Number); })
         .enter().append('rect')
-            .attr('width', cellSize)
-            .attr('height', cellSize)
-            .attr('x', function(d) { return d3.timeWeek.count(d3.timeYear(d), d) * cellSize; })
-            .attr('y', function(d) { return d.getDay() * cellSize; })
-            .datum(d3.timeFormat('%Y-%m-%d'));
+            .attr('width', cell_size)
+            .attr('height', cell_size)
+            .attr('x', function(d){ return (d % cells_per_row) * cell_size; })
+            .attr('y', function(d){ return Math.floor(d / cells_per_row) * cell_size; });
 
     svg.selectAll('rect')
         .attr('fill', function(d, i, n){
@@ -171,7 +167,7 @@ function create_calendar(selection){
             } else{
                 return 'red';
             }
-        })
+        });
 }
 
 // on document load
