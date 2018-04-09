@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
     <script
         src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -14,9 +15,31 @@
 </head>
 
 <body>
-    <form id="worksheet_input"></form>
+    <div id="formWrapper">
+        <form id="patientInfo">
+            <h2>Patient Information</h2>
+            Name <input type="text" name="patientName"/>
+        </form>
+        <form id="prescriberInfo">
+            <h2>Prescriber Information</h2>
+            Name <input type="text" name="prescriberName"/>
+        </form>
+        <form id="worksheetInput"></form>
+        <form id="prescriptionInput"></form>
+        
+        <button id="updateBtn">Update</button>
+        <button id="clearBtn">Clear</button>
+        <button id="printBtn">Print</button>
+    </div>
     <div id="worksheet">
         <div id="page1">
+            <div id="patientInfo">
+                <h2>Patient Information</h2>
+            </div>
+            <div id="prescriberInfo">
+                <h2>Prescriber Information</h2>
+            </div>
+            <div id="visuals"></div>
             <div id="calendar"></div>
         </div>
         <div id="page2" class="hide">
