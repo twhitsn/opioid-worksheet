@@ -1,19 +1,24 @@
 /*************** PAGE ***************/
 
-#worksheet_input, #worksheet{
+#formWrapper{
     display: inline-block;
+}
+
+form, #worksheet{
     vertical-align: top;
 }
 
-#worksheet_input{
-    max-width: 24%;
+#formWrapper{
+    width: 24%;
 }
 
 #worksheet{
-    max-width: 75%;
+    display: inline-block;
+    width: 75%;
 }
 
 #page1, #page2{
+    margin: auto;
     width: 8.5in;
     height: 11in;
     border: 1px solid black;
@@ -22,12 +27,50 @@
 
 /*************** FORM ***************/
 
-#worksheet_input label{
+form label{
     display: block;
 }
 
-#worksheet_input input[type=submit]{
-    margin-top: 50px;
+form button{
+    margin-top: 20px;
+}
+
+form div label:not(:first-child) {
+    margin-top: 5px;
+}
+
+form h2{
+    margin: .5em 0 .5em 0;
+    font-weight: 600;
+    font-size: 1.2em;
+}
+
+/*************** PAGE1 ***************/
+#page1{
+    position: relative;
+}
+
+#page1 div{
+    position: absolute;
+}
+
+#patientInfo{
+    top: .5in;
+    left: .5in;
+}
+
+#prescriberInfo{
+    top: .5in;
+    right: .5in;
+}
+
+#visuals{
+    top: 3in;
+    left: .5in;
+}
+
+#calendar{
+    bottom: .5in;
 }
 
 /*************** PRINT ***************/
@@ -35,7 +78,6 @@
     @page {
         size: letter;
         margin: 0;
-        padding: 0;
     }
     
     body *{
@@ -53,12 +95,22 @@
     }
     
     #page1, #page2{
+        display: block;
         width: 8.5in;
         height: 11in;
+        border: 1px solid #FFF;
     }
 }
 
 /*************** MISC ***************/
 .hide{
-    visibility: hidden;
+    display: none;
+}
+
+svg{
+    display: block;
+}
+
+body{
+    font-family: 'Open Sans', sans-serif;
 }
