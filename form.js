@@ -3,34 +3,44 @@ var fields = {
     'surgery_bin': 'Surgery Type',
     'approach': 'Approach',
     'pre_surg_stat': 'Opioid Status',
-    'hx_mh': 'History of Mental Health Diagnosis'  
-}
+    'hx_mh': 'History of Mental Health Dx'  
+};
 
-function fill_form(csv){
-    var $worksheet_input = $('#worksheet_input');
+// prescriptions with mme conversion
+var prescriptions = {
+    'codeine': 0.15,
+    'hydrocodone': 1,
+    'hydromorphone': 4,
+    'morphine': 1,
+    'oxycodone': 1.5,
+    'oxymorphone': 3
+};
 
-    var field_options = {};
+function fillForm(csv){
+    var $worksheetInput = $('#worksheetInput');
+
+    var fieldOptions = {};
     // loop through all fields (keys)
     for(var i = 0, imax = Object.keys(fields).length; i < imax; i++){
         // get field name
         var field = Object.keys(fields)[i];
         // instantiate empty array for field
-        field_options[field] = []
+        fieldOptions[field] = [];
         for(var j = 0, jmax = csv.length; j < jmax; j++){
             value = csv[j][field];
             // make sure value is not already in array (prevent duplicates)
-            if(value && field_options[field].indexOf(value) < 0){
-                field_options[field].push(value);
+            if(value && fieldOptions[field].indexOf(value) < 0){
+                fieldOptions[field].push(value);
             }
         }
     }
 
-    for(var field in field_options) {
-        var options = field_options[field]
-        var $input_container = $('<div>');
+    for(var field in fieldOptions) {
+        var options = fieldOptions[field]
+        var $inputContainer = $('<div>');
         
-        var $container_label = $('<h2>').text(fields[field]);
-        $input_container.append($container_label);
+        var $containerLabel = $('<h2>').text(fields[field]);
+        $inputContainer.append($containerLabel);
         
         // create input based on number of options
         if(options.length > 5){ // select
@@ -39,7 +49,7 @@ function fill_form(csv){
                 $input.append($('<option>').html(options[i]));
             }
             
-            $input_container.append($input);
+            $inputContainer.append($input);
             
         } else{ // radio      
             for(var i in options){
@@ -54,39 +64,50 @@ function fill_form(csv){
                 var $label = $('<label>').text(options[i]);
                 
                 $label.prepend($input);
-                $input_container.append($label);
+                $inputContainer.append($label);
             }
         }
         
-        $worksheet_input.append($input_container);
+        $worksheetInput.append($inputContainer);
     }
     
-    // create submit button
-    $worksheet_input.append('<button id="update_btn">Update</button>');
-    $worksheet_input.append('<button id="print_btn">Print</button>');
+    // prescription selection
+    
+    var prescriptionHtml = '<div><h2>Prescription</h2>' + 
+           '<select name="prescriptionDrug">';
+    
+    for(var drug in prescriptions){
+        prescriptionHtml += '<option value="' + drug + '">' + drug + '</option>';
+    }      
+   
+    prescriptionHtml += '</select>';
+    prescriptionHtml += '<label><input type="text" name="prescriptionAmount" required> mg/day</label></div>';
+    
+    $('#prescriptionInput').append(prescriptionHtml);
     
     // submit event
-    $('#update_btn').click(function(evt){
+    $('#updateBtn').click(function(evt){
         evt.preventDefault();
         var $page1 = $('#page1');
         
-        var form_obj = jsonify_form($worksheet_input);
-        var cur_csv_obj = match_to_csv(form_obj, csv);
+        var formObj = jsonifyForm($worksheetInput);
+        var curCsvObj = matchToCsv(formObj, csv);
         
-        if(cur_csv_obj){
-            console.log(JSON.stringify(cur_csv_obj));
-            create_calendar(cur_csv_obj);
+        if(curCsvObj){
+            curCsvObj = mergeObjects(curCsvObj, jsonifyForm($('#prescriptionInput')));
+            console.log(JSON.stringify(curCsvObj));
+            createCalendar(curCsvObj);
         }
     });
     
-    $('#print_btn').click(function(evt){
+    $('#printBtn').click(function(evt){
         evt.preventDefault();
         window.print()
     });
 }
 
 // turn form into json object
-function jsonify_form(form){
+function jsonifyForm(form){
     var obj = {};
     
     //loop through serialized array
@@ -102,10 +123,16 @@ function jsonify_form(form){
     return obj;
 }
 
+// merge two objects
+function mergeObjects(obj1, obj2) {
+    Object.keys(obj2).forEach(function(key){ obj1[key] = obj2[key]; });
+    return obj1;
+}
+
 // match current form item to item in csv
-function match_to_csv(form, csv){
+function matchToCsv(form, csv){
     for(var i = 0, imax = csv.length; i < imax; i++){
-        var is_match = true;
+        var isMatch = true;
         var row = csv[i];
         
         // loop through form values
@@ -114,12 +141,12 @@ function match_to_csv(form, csv){
             
             // if all form values do not match all equivalent row values in csv
             if(value != row[key]){
-                is_match = false;
+                isMatch = false;
             }
         }
         
         // all match
-        if(is_match){
+        if(isMatch){
             return row;
         }
     }
@@ -127,15 +154,30 @@ function match_to_csv(form, csv){
     return false;
 }
 
-function create_calendar(selection){
-    var cells_per_row = 21,
-        total_cells = Math.round(selection.q3_taken);
+function createCalendar(selection){
+    // colors from Google material design, weight 300
+    var colors = [
+        '#81C784', //green
+        '#FFF176', //yellow
+        '#E57373' //red
+    ];
+    
+    var minCells = 30
+    
+    var mmePerDay = prescriptions[selection.prescriptionDrug] * selection.prescriptionAmount;
 
-    var page_width = $('#page1').width();
+    var cellsPerRow = 21,
+        totalCells = Math.round(selection.q3_taken / mmePerDay);
+        
+    if(totalCells < minCells){
+        totalCells = minCells;
+    }
+
+    var pageWidth = $('#page1').width();
 
     // calendar sizing
-    var width = $('#page1').width(),
-        cell_size = page_width / cells_per_row;
+    var width = pageWidth,
+        cellSize = pageWidth / cellsPerRow;
         
     // remove any previous elements
     d3.select('#calendar').selectAll('svg').remove();
@@ -145,27 +187,30 @@ function create_calendar(selection){
         .selectAll('svg')
         .data([1]) // number of calendar items (years) FIXME: unnecessary
         .enter().append('svg')
-            .attr('width', width);
+            .attr('width', width)
+            .attr('height', Math.ceil(totalCells / cellsPerRow) * cellSize);
         
     var rect = svg.append('g')
             .attr('fill', 'none')
-            .attr('stroke', '#fff')
+            .attr('stroke', '#ccc')
         .selectAll('rect') //FIXME: unnecessary
-        .data(function(d){ return Array.apply(null, {length: total_cells}).map(Number.call, Number); })
+        .data(function(d){ return Array.apply(null, {length: totalCells}).map(Number.call, Number); }) // array from 0 - length of total cells
         .enter().append('rect')
-            .attr('width', cell_size)
-            .attr('height', cell_size)
-            .attr('x', function(d){ return (d % cells_per_row) * cell_size; })
-            .attr('y', function(d){ return Math.floor(d / cells_per_row) * cell_size; });
+            .attr('width', cellSize)
+            .attr('height', cellSize)
+            .attr('x', function(d){ return (d % cellsPerRow) * cellSize; })
+            .attr('y', function(d){ return Math.floor(d / cellsPerRow) * cellSize; });
 
     svg.selectAll('rect')
         .attr('fill', function(d, i, n){
-            if(i <= selection.median_taken){
-                return 'green';
-            } else if(i <= selection.q3_taken){
-                return 'yellow';
+            var curMme = i * mmePerDay;
+            
+            if(curMme < selection.median_taken){
+                return colors[0];
+            } else if(curMme < selection.q3_taken){
+                return colors[1];
             } else{
-                return 'red';
+                return colors[2];
             }
         });
 }
@@ -179,6 +224,6 @@ $(function(){
         }
         return data; //promise
     }).then(function(csv){
-        fill_form(csv);
+        fillForm(csv);
     })
 })
