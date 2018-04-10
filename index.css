@@ -50,8 +50,12 @@ form h2{
     position: relative;
 }
 
-#page1 div{
+#page1 > div{
     position: absolute;
+}
+
+#page1 h2{
+    margin: 0;
 }
 
 #patientInfo{
@@ -61,12 +65,24 @@ form h2{
 
 #prescriberInfo{
     top: .5in;
+    left: 4.5in;
     right: .5in;
 }
 
 #visuals{
     top: 3in;
     left: .5in;
+    right: 3in;
+}
+
+#visuals img{
+    height: 2in;
+}
+
+#importantInfo{
+    top: 3in;
+    left: 4.5in;
+    right: .5in;
 }
 
 #calendar{
