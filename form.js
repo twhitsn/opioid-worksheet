@@ -92,6 +92,7 @@ function fillForm(csv){
         var formObj = jsonifyForm($worksheetInput);
         var curCsvObj = matchToCsv(formObj, csv);
         
+        updateText(curCsvObj)
         updateImages(curCsvObj);
         
         if(curCsvObj){
@@ -107,12 +108,19 @@ function fillForm(csv){
     });
 }
 
+function updateText(selection){
+    refillPerc = Math.round(selection.perc_refill);
+    $('#refillPerc').text(refillPerc);
+}
+
 function updateImages(selection){
     painImgBase = 'images/PainFaces-';
 
-    painLevel = Math.floor(selection.perc_pain_int / 10);
+    painLevel = Math.round(selection.perc_pain_int / 10);
     painLevel = (painLevel == 0) ? 1 : painLevel
     painLevel = (painLevel == 10) ? String(painlevel) : '0' + String(painLevel);
+    
+    console.log(painLevel);
     
     $('#painImg').attr('src', painImgBase + painLevel + '.png');
 }

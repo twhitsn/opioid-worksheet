@@ -79,6 +79,13 @@ form h2{
     height: 2in;
 }
 
+#refillPerc{
+    position: absolute;
+    left: .4in;
+    top: .8in;
+    font-size: .4in;
+}
+
 #importantInfo{
     top: 3in;
     left: 4.5in;
