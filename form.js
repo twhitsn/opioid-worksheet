@@ -88,10 +88,11 @@ function fillForm(csv){
     // submit event
     $('#updateBtn').click(function(evt){
         evt.preventDefault();
-        var $page1 = $('#page1');
         
         var formObj = jsonifyForm($worksheetInput);
         var curCsvObj = matchToCsv(formObj, csv);
+        
+        updateImages(curCsvObj);
         
         if(curCsvObj){
             curCsvObj = mergeObjects(curCsvObj, jsonifyForm($('#prescriptionInput')));
@@ -104,6 +105,16 @@ function fillForm(csv){
         evt.preventDefault();
         window.print()
     });
+}
+
+function updateImages(selection){
+    painImgBase = 'images/PainFaces-';
+
+    painLevel = Math.floor(selection.perc_pain_int / 10);
+    painLevel = (painLevel == 0) ? 1 : painLevel
+    painLevel = (painLevel == 10) ? String(painlevel) : '0' + String(painLevel);
+    
+    $('#painImg').attr('src', painImgBase + painLevel + '.png');
 }
 
 // turn form into json object
