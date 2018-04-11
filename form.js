@@ -1,5 +1,5 @@
 // form fields to fill
-var fillFields = ['surgery_bin', 'approach']
+var fillFields = ['surgery_bin']
 
 // prescriptions with mme conversion
 var prescriptions = {
@@ -13,14 +13,14 @@ var prescriptions = {
 
 function fillForm(csv){
     var $worksheetInput = $('#worksheetInput');
-    
+ 
     for(var f = 0, fmax = fillFields.length; f < fmax; f++){
-        field = fillFields[f];
-        options = [];
+        var field = fillFields[f];
+        var options = [];
     
         // get values from csv
         for(var i = 0, imax = csv.length; i < imax; i++){
-            value = csv[i][field];
+            var value = csv[i][field];
             // make sure value is not already in array (prevent duplicates)
             if(value && options.indexOf(value) < 0){
                 options.push(value);
@@ -28,36 +28,56 @@ function fillForm(csv){
         }
         
         // put values in select
-        for(var i = 0, imax = options.length; i < imax; i++){
-            $('#' + field + '_select').append($('<option>').html(options[i]));
-        }
+        populateSelect(field + '_select', options);
     }
     
     // prescription selection
     for(var drug in prescriptions){
         $('#prescriptionDrug').append($('<option>').val(drug).html(drug));
-    }      
+    }
     
+    // surgery select
+    $('#surgery_bin_select').change(function(){
+        var surgery = $(this).find(":selected").text();
+        var approaches = [];
+        
+        for(var i = 0, imax = csv.length; i < imax; i++){
+            row = csv[i];
+            approach = row['approach'];
+            
+            if(row['surgery_bin'] == surgery && approaches.indexOf(approach) < 0){
+                approaches.push(approach);
+            }
+        }
+        
+        populateSelect('approachSelect', approaches, true);
+    });
     
-    // submit event
+    // button clicks
     $('#updateBtn').click(function(evt){
         evt.preventDefault();
         
         var formObj = jsonifyForm($worksheetInput);
-        var selection = matchToCsv(formObj, csv);
+        var csvMatch = matchToCsv(formObj, csv);
         
+        if(csvMatch){
+            var selection = mergeObjects(csvMatch, formObj);
+            
+            console.log(selection);
         
-        
-        if(selection){
             updateText(selection);
             updateImages(selection);
             
-            //add prescription info
-            selection['prescriptionDrug'] = $('#prescriptionDrug').find(":selected").text();
-            selection['prescriptionAmount'] = $('#prescriptionAmount').val();
-            
             createCalendar(selection);
         }
+    });
+    
+    $('#clearBtn').click(function(evt){
+        $worksheetInput.trigger('reset');
+        $('#refillPerc').text('');
+        $('#painImg').removeAttr('src');
+        $('#calendar').empty();
+        $('#approachSelect').empty();
     });
     
     $('#printBtn').click(function(evt){
@@ -66,15 +86,25 @@ function fillForm(csv){
     });
 }
 
+function populateSelect(id, options, empty = false){
+    var $select = $('#' + id);
+    
+    if(empty){ $select.empty(); }
+    
+    for(var i = 0, imax = options.length; i < imax; i++){
+        $select.append($('<option>').html(options[i]));
+    }
+}
+
 function updateText(selection){
-    refillPerc = Math.round(selection.perc_refill);
+    var refillPerc = Math.round(selection.perc_refill);
     $('#refillPerc').text(refillPerc);
 }
 
 function updateImages(selection){
-    painImgBase = 'images/PainFaces-';
+    var painImgBase = 'images/PainFaces-';
 
-    painLevel = Math.round(selection.perc_pain_int / 10);
+    var painLevel = Math.round(selection.perc_pain_int / 10);
     painLevel = (painLevel == 0) ? 1 : painLevel
     painLevel = (painLevel == 10) ? String(painlevel) : '0' + String(painLevel);
     
@@ -99,9 +129,14 @@ function jsonifyForm(form){
 }
 
 // merge two objects
-function mergeObjects(obj1, obj2) {
-    Object.keys(obj2).forEach(function(key){ obj1[key] = obj2[key]; });
-    return obj1;
+// must create new object or else a pointer will be returned
+function mergeObjects(obj1, obj2){
+    var newObj = {}
+    
+    Object.keys(obj1).forEach(function(key){ newObj[key] = obj1[key]; });
+    Object.keys(obj2).forEach(function(key){ newObj[key] = obj2[key]; });
+    
+    return newObj;
 }
 
 // match current form item to item in csv
@@ -112,10 +147,10 @@ function matchToCsv(form, csv){
         
         // loop through form values
         for(var key in form){
-            value = form[key];
+            var value = form[key];
             
             // if all form values do not match all equivalent row values in csv
-            if(Object.keys(row).indexOf(key) > 0 && value != row[key]){
+            if(Object.keys(row).indexOf(key) >= 0 && value != row[key]){
                 isMatch = false;
             }
         }
@@ -148,8 +183,6 @@ function createCalendar(selection){
         totalCells = minCells;
     }
     
-    console.log(selection);
-
     var pageWidth = $('#page1').width();
 
     // calendar sizing

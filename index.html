@@ -20,20 +20,22 @@
         <form id="worksheetInput">
             <div>
                 <h2>Patient Information</h2>
-                Name <input type="text" name="patientName"/>
+                Name <input id="patientName" type="text" name="patientName"/>
             </div>
             <div>
                 <h2>Prescriber Information</h2>
-                <label>Name <input type="text" name="prescriberName"/></label>
-                <label>Phone <input type="text" name="prescriberPhone"/></label>
+                <label>Name <input id="prescriberName" type="text" name="prescriberName"/></label>
+                <label>Phone <input id="prescriberPhone" type="text" name="prescriberPhone"/></label>
             </div>
             <div>
                 <h2>Surgery Type</h2>
-                <select id="surgery_bin_select" name="surgery_bin"></select>
+                <select id="surgery_bin_select" name="surgery_bin">
+                    <option selected>Select One</option>
+                </select>
             </div>
             <div>
                 <h2>Approach</h2>
-                <select id="approach_select" name="approach"></select>
+                <select id="approachSelect" name="approach"></select>
             </div>
             <div>
                 <h2>Opioid Status</h2>
