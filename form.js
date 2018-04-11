@@ -1,10 +1,5 @@
-// match csv fields to form fields
-var fields = {
-    'surgery_bin': 'Surgery Type',
-    'approach': 'Approach',
-    'pre_surg_stat': 'Opioid Status',
-    'hx_mh': 'History of Mental Health Dx'  
-};
+// form fields to fill
+var fillFields = ['surgery_bin', 'approach']
 
 // prescriptions with mme conversion
 var prescriptions = {
@@ -18,87 +13,50 @@ var prescriptions = {
 
 function fillForm(csv){
     var $worksheetInput = $('#worksheetInput');
-
-    var fieldOptions = {};
-    // loop through all fields (keys)
-    for(var i = 0, imax = Object.keys(fields).length; i < imax; i++){
-        // get field name
-        var field = Object.keys(fields)[i];
-        // instantiate empty array for field
-        fieldOptions[field] = [];
-        for(var j = 0, jmax = csv.length; j < jmax; j++){
-            value = csv[j][field];
+    
+    for(var f = 0, fmax = fillFields.length; f < fmax; f++){
+        field = fillFields[f];
+        options = [];
+    
+        // get values from csv
+        for(var i = 0, imax = csv.length; i < imax; i++){
+            value = csv[i][field];
             // make sure value is not already in array (prevent duplicates)
-            if(value && fieldOptions[field].indexOf(value) < 0){
-                fieldOptions[field].push(value);
-            }
-        }
-    }
-
-    for(var field in fieldOptions) {
-        var options = fieldOptions[field]
-        var $inputContainer = $('<div>');
-        
-        var $containerLabel = $('<h2>').text(fields[field]);
-        $inputContainer.append($containerLabel);
-        
-        // create input based on number of options
-        if(options.length > 5){ // select
-            var $input = $('<select>').attr('name', field);
-            for(var i in options){
-                $input.append($('<option>').html(options[i]));
-            }
-            
-            $inputContainer.append($input);
-            
-        } else{ // radio      
-            for(var i in options){
-                var $input = $('<input>');
-                $input.attr({
-                    type: 'radio', 
-                    name: field,
-                    value: options[i],
-                    required: true
-                });
-                
-                var $label = $('<label>').text(options[i]);
-                
-                $label.prepend($input);
-                $inputContainer.append($label);
+            if(value && options.indexOf(value) < 0){
+                options.push(value);
             }
         }
         
-        $worksheetInput.append($inputContainer);
+        // put values in select
+        for(var i = 0, imax = options.length; i < imax; i++){
+            $('#' + field + '_select').append($('<option>').html(options[i]));
+        }
     }
     
     // prescription selection
-    
-    var prescriptionHtml = '<div><h2>Prescription</h2>' + 
-           '<select name="prescriptionDrug">';
-    
     for(var drug in prescriptions){
-        prescriptionHtml += '<option value="' + drug + '">' + drug + '</option>';
+        $('#prescriptionDrug').append($('<option>').val(drug).html(drug));
     }      
-   
-    prescriptionHtml += '</select>';
-    prescriptionHtml += '<label><input type="text" name="prescriptionAmount" required> mg/day</label></div>';
     
-    $('#prescriptionInput').append(prescriptionHtml);
     
     // submit event
     $('#updateBtn').click(function(evt){
         evt.preventDefault();
         
         var formObj = jsonifyForm($worksheetInput);
-        var curCsvObj = matchToCsv(formObj, csv);
+        var selection = matchToCsv(formObj, csv);
         
-        updateText(curCsvObj)
-        updateImages(curCsvObj);
         
-        if(curCsvObj){
-            curCsvObj = mergeObjects(curCsvObj, jsonifyForm($('#prescriptionInput')));
-            console.log(JSON.stringify(curCsvObj));
-            createCalendar(curCsvObj);
+        
+        if(selection){
+            updateText(selection);
+            updateImages(selection);
+            
+            //add prescription info
+            selection['prescriptionDrug'] = $('#prescriptionDrug').find(":selected").text();
+            selection['prescriptionAmount'] = $('#prescriptionAmount').val();
+            
+            createCalendar(selection);
         }
     });
     
@@ -119,8 +77,6 @@ function updateImages(selection){
     painLevel = Math.round(selection.perc_pain_int / 10);
     painLevel = (painLevel == 0) ? 1 : painLevel
     painLevel = (painLevel == 10) ? String(painlevel) : '0' + String(painLevel);
-    
-    console.log(painLevel);
     
     $('#painImg').attr('src', painImgBase + painLevel + '.png');
 }
@@ -159,7 +115,7 @@ function matchToCsv(form, csv){
             value = form[key];
             
             // if all form values do not match all equivalent row values in csv
-            if(value != row[key]){
+            if(Object.keys(row).indexOf(key) > 0 && value != row[key]){
                 isMatch = false;
             }
         }
@@ -191,6 +147,8 @@ function createCalendar(selection){
     if(totalCells < minCells){
         totalCells = minCells;
     }
+    
+    console.log(selection);
 
     var pageWidth = $('#page1').width();
 

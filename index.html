@@ -16,17 +16,42 @@
 
 <body>
     <div id="formWrapper">
-        <form id="patientInfo">
-            <h2>Patient Information</h2>
-            Name <input type="text" name="patientName"/>
+        
+        <form id="worksheetInput">
+            <div>
+                <h2>Patient Information</h2>
+                Name <input type="text" name="patientName"/>
+            </div>
+            <div>
+                <h2>Prescriber Information</h2>
+                <label>Name <input type="text" name="prescriberName"/></label>
+                <label>Phone <input type="text" name="prescriberPhone"/></label>
+            </div>
+            <div>
+                <h2>Surgery Type</h2>
+                <select id="surgery_bin_select" name="surgery_bin"></select>
+            </div>
+            <div>
+                <h2>Approach</h2>
+                <select id="approach_select" name="approach"></select>
+            </div>
+            <div>
+                <h2>Opioid Status</h2>
+                <label><input type="radio" name="pre_surg_stat" value="Opioid Naive" required="required">Opioid Naive</label>
+                <label><input type="radio" name="pre_surg_stat" value="Opioid Exposed" required="required">Opioid Exposed</label>
+                <label><input type="radio" name="pre_surg_stat" value="Opioid Misuse" required="required">Opioid Misuse</label>
+            </div>
+            <div>
+                <h2>History of Mental Health Dx</h2>
+                <label><input type="radio" name="hx_mh" value="TRUE" required="required">True</label>
+                <label><input type="radio" name="hx_mh" value="FALSE" required="required">False</label>
+            </div>
+            <div>
+                <h2>Prescription</h2>
+                <select id="prescriptionDrug" name="prescriptionDrug"></select>
+                <label><input id="prescriptionAmount" type="text" name="prescriptionAmount" required=""> mg/day</label>
+            </div>
         </form>
-        <form id="prescriberInfo">
-            <h2>Prescriber Information</h2>
-            <label>Name <input type="text" name="prescriberName"/></label>
-            <label>Phone <input type="text" name="prescriberPhone"/></label>
-        </form>
-        <form id="worksheetInput"></form>
-        <form id="prescriptionInput"></form>
         
         <button id="updateBtn">Update</button>
         <button id="clearBtn">Clear</button>
