@@ -11,12 +11,8 @@ Dr. Gabriel Brat
 - Neha Rawat
 - Tim Whitson @whitstd
 
-## Issues
-
-How will the information be served?
-
 ## To-do
 
-- [ ] Make "approach" dependent upon surgery type in form
-- [ ] Save file as PDF
+- [X] Make "approach" dependent upon surgery type in form
+- [X] Save file as PDF
 - [ ] Error handling if incompatible fields are selected
