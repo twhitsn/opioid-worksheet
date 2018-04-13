@@ -172,22 +172,18 @@ function createCalendar(selection){
         '#E57373' //red
     ];
     
-    var minCells = 30
+    // gap between days (inches)
+    var cellGap = 0.1,
+        calGap = 0.5;
     
     var mmePerDay = prescriptions[selection.prescriptionDrug] * selection.prescriptionAmount;
 
-    var cellsPerRow = 21,
-        totalCells = Math.round(selection.q3_taken / mmePerDay);
-        
-    if(totalCells < minCells){
-        totalCells = minCells;
-    }
-    
-    var pageWidth = $('#page1').width();
+    var cellsPerRow = 7,
+        cellsPerCol = 4,
+        numCells = 56;
 
     // calendar sizing
-    var width = pageWidth,
-        cellSize = pageWidth / cellsPerRow;
+    var cellSize = 0.25;
         
     // remove any previous elements
     d3.select('#calendar').selectAll('svg').remove();
@@ -196,33 +192,51 @@ function createCalendar(selection){
     var svg = d3.select('#calendar')
         .selectAll('svg')
         .data([1]) // number of calendar items (years) FIXME: unnecessary
-        .enter().append('svg')
-            .attr('width', width)
-            .attr('height', Math.ceil(totalCells / cellsPerRow) * cellSize);
-        
-    var rect = svg.append('g')
-            .attr('fill', 'none')
-            .attr('stroke', '#ccc')
-        .selectAll('rect') //FIXME: unnecessary
-        .data(function(d){ return Array.apply(null, {length: totalCells}).map(Number.call, Number); }) // array from 0 - length of total cells
-        .enter().append('rect')
-            .attr('width', cellSize)
-            .attr('height', cellSize)
-            .attr('x', function(d){ return (d % cellsPerRow) * cellSize; })
-            .attr('y', function(d){ return Math.floor(d / cellsPerRow) * cellSize; });
+        .enter()
+            .append('svg')
+                .attr('width', '6in')
+                .attr('height', '3in');
+    
+    function drawCalendar(calIndex = 0){
+        var days = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
+    
+        var startX = calIndex ? calGap + cellSize * cellsPerRow + cellGap * cellsPerRow : 0;
+        var drawing = svg.append('g');
 
-    svg.selectAll('rect')
-        .attr('fill', function(d, i, n){
-            var curMme = i * mmePerDay;
-            
-            if(curMme < selection.median_taken){
-                return colors[0];
-            } else if(curMme < selection.q3_taken){
-                return colors[1];
-            } else{
-                return colors[2];
-            }
-        });
+        drawing.selectAll('text')
+            .data(function(d){ return Array.apply(null, {length: 7}).map(Number.call, Number); }) // create array from start - finish for calendar
+            .enter().append('text')
+                .attr('width', cellSize + 'in')
+                .attr('height', cellSize + 'in')
+                .attr('x', function(d){ return String(startX + (d % cellsPerRow) * cellSize + ((d % cellsPerRow) * cellGap)) + 'in'; })
+                .attr('y', function(d){ return '0in'; })
+                .text('M');
+                
+        drawing.selectAll('rect')
+            .data(function(d){ return Array.apply(null, {length: numCells / 2}).map(Number.call, Number); }) // create array from start - finish for calendar
+            .enter().append('rect')
+                .attr('width', cellSize + 'in')
+                .attr('height', cellSize + 'in')
+                .attr('x', function(d){ return String(startX + (d % cellsPerRow) * cellSize + ((d % cellsPerRow) * cellGap)) + 'in'; })
+                .attr('y', function(d){ return String(Math.floor(d / cellsPerRow) * cellSize + (Math.floor(d / cellsPerRow) * cellGap) + cellSize) + 'in'; });
+
+        svg.selectAll('rect')
+            .attr('stroke', '#CCC')
+            .attr('fill', function(d, i, n){
+                var curMme = i * mmePerDay;
+                
+                if(curMme < selection.median_taken){
+                    return colors[0];
+                } else if(curMme < selection.q3_taken){
+                    return colors[1];
+                } else{
+                    return colors[2];
+                }
+            });
+    }
+    
+    drawCalendar(0);
+    drawCalendar(1);
 }
 
 // on document load
