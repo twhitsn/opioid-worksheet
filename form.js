@@ -78,6 +78,7 @@ function fillForm(csv){
         $('#painImg').removeAttr('src');
         $('#calendar').empty();
         $('#approachSelect').empty();
+        document.getElementById('prescriptionStartDate').valueAsDate = new Date();
     });
     
     $('#printBtn').click(function(evt){
@@ -102,7 +103,7 @@ function updateText(selection){
 }
 
 function updateImages(selection){
-    var painImgBase = 'images/PainFaces-';
+    var painImgBase = 'images/PainFaces_V02-';
 
     var painLevel = Math.round(selection.perc_pain_int / 10);
     painLevel = (painLevel == 0) ? 1 : painLevel
@@ -167,9 +168,10 @@ function matchToCsv(form, csv){
 function createCalendar(selection){
     // colors from Google material design, weight 300
     var colors = [
-        '#81C784', //green
-        '#FFF176', //yellow
-        '#E57373' //red
+        '#9E9E9E', // gray
+        '#81C784', // green
+        '#FFF176', // yellow
+        '#E57373' // red
     ];
     
     // gap between days (inches)
@@ -194,8 +196,8 @@ function createCalendar(selection){
         .data([1]) // number of calendar items (years) FIXME: unnecessary
         .enter()
             .append('svg')
-                .attr('width', '6in')
-                .attr('height', '3in');
+                .attr('width', '6in');
+                //.attr('height', '3in');
     
     function drawCalendar(calIndex = 0){
         var days = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
@@ -206,11 +208,13 @@ function createCalendar(selection){
         drawing.selectAll('text')
             .data(function(d){ return Array.apply(null, {length: 7}).map(Number.call, Number); }) // create array from start - finish for calendar
             .enter().append('text')
-                .attr('width', cellSize + 'in')
-                .attr('height', cellSize + 'in')
-                .attr('x', function(d){ return String(startX + (d % cellsPerRow) * cellSize + ((d % cellsPerRow) * cellGap)) + 'in'; })
-                .attr('y', function(d){ return '0in'; })
-                .text('M');
+                .attr('stroke', colors[0])
+                .attr('x', function(d){ return String(startX + (d % cellsPerRow) * cellSize + ((d % cellsPerRow) * cellGap) + cellSize / 2) + 'in'; })
+                .attr('y', function(d){ return '.25in'; })
+                .attr('text-anchor', 'middle')
+                .text(function(d){
+                    return days[d];
+                });
                 
         drawing.selectAll('rect')
             .data(function(d){ return Array.apply(null, {length: numCells / 2}).map(Number.call, Number); }) // create array from start - finish for calendar
@@ -218,22 +222,31 @@ function createCalendar(selection){
                 .attr('width', cellSize + 'in')
                 .attr('height', cellSize + 'in')
                 .attr('x', function(d){ return String(startX + (d % cellsPerRow) * cellSize + ((d % cellsPerRow) * cellGap)) + 'in'; })
-                .attr('y', function(d){ return String(Math.floor(d / cellsPerRow) * cellSize + (Math.floor(d / cellsPerRow) * cellGap) + cellSize) + 'in'; });
+                .attr('y', function(d){ return String((Math.floor(d / cellsPerRow) + 1) * cellSize + (Math.floor(d / cellsPerRow) * cellGap) + cellGap) + 'in'; });
+                
+        svg.attr('height', 180); //FIXME: arbitrary, fix
 
         svg.selectAll('rect')
-            .attr('stroke', '#CCC')
+            .attr('stroke', colors[0])
             .attr('fill', function(d, i, n){
+            
+                i = i - offsetDays;
+                
                 var curMme = i * mmePerDay;
                 
-                if(curMme < selection.median_taken){
+                if(i < 0){
                     return colors[0];
-                } else if(curMme < selection.q3_taken){
+                }else if(curMme < selection.median_taken){
                     return colors[1];
-                } else{
+                } else if(curMme < selection.q3_taken){
                     return colors[2];
+                } else{
+                    return colors[3];
                 }
             });
     }
+    
+    var offsetDays = new Date($('#prescriptionStartDate').val()).getDay();
     
     drawCalendar(0);
     drawCalendar(1);
@@ -248,6 +261,7 @@ $(function(){
         }
         return data; //promise
     }).then(function(csv){
+        document.getElementById('prescriptionStartDate').valueAsDate = new Date(); // default start date today
         fillForm(csv);
     })
 })

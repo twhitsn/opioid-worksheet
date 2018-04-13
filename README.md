@@ -16,3 +16,5 @@ Dr. Gabriel Brat
 - [X] Make "approach" dependent upon surgery type in form
 - [X] Save file as PDF
 - [ ] Error handling if incompatible fields are selected
+- [ ] Error handling - start date before current day
+- [ ] Timezone issues
