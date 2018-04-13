@@ -1,14 +1,14 @@
 # Personalized Post-Surgery Opioid Risk Mitigation and Teaching
 
-## Project Owner
+## Project Client
 
 Dr. Gabriel Brat
 
 ## Authors
 
-- Himani Bhatt
-- Felipe Lozano
-- Neha Rawat
+- Himani Bhatt  @himbhatt
+- Felipe Lozano @flozanor82
+- Neha Rawat @Neha41093
 - Tim Whitson @whitstd
 
 ## To-do
@@ -18,3 +18,8 @@ Dr. Gabriel Brat
 - [ ] Error handling if incompatible fields are selected
 - [ ] Error handling - start date before current day
 - [ ] Timezone issues
+
+## Potential Extensions
+- Include separately or in the same design the Physical Therapy illustrations.
+    - This would require creating a bank of images.
+- Change design
