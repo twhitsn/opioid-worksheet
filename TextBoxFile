@@ -1,5 +1,5 @@
-I. Text Box Front Page
-<TITLE>Important Information:</TITLE>
+<!--I. Text Box Front Page-->
+<h2>Important Information:</h2>
 <ul>
     <li> Use your medication <strong>only as prescribed</strong>. No more, nor more frequently.</li>
     <li> Take your medicine <strong>with food</strong> , don't take it with an empty stomach.</li>
@@ -14,8 +14,8 @@ I. Text Box Front Page
         </li>
 </ul>
 
-II. Text Box Page 2 on top 
-<TITLE>Responsible use of opioids.</TITLE>
+<!--II. Text Box Page 2 on top-->
+<h2>Responsible use of opioids.</h2>
 <ul>
     <li> <strong>Don't take more</strong> medicine than the prescribed one, <strong>don't take it more frequently</strong> than instructed.</li> 
     <li> <strong>Disclose</strong> all information about <strong>all the medicine you take</strong> or may take. Side effects can be worse under the influence of additional medicine. </li> 
@@ -26,8 +26,8 @@ II. Text Box Page 2 on top
     <li> As your <strong>pain eases, wait longer</strong> between each pill. </li> 
 </ul>
 
-III. Text Box Page 2, below (We did't talk about it but lets include this)
-<TITLE>The following are common side effects:</TITLE>
+<!--III. Text Box Page 2, below (We did't talk about it but lets include this)-->
+<h2>The following are common side effects:</h2>
 <ul>
     <li>Feeling sleepy or dizzy. </li>
     <li>Itching, talk to your doctor if this happens to you.</li>
@@ -36,8 +36,8 @@ III. Text Box Page 2, below (We did't talk about it but lets include this)
     <li>Low Energy / Sex Drive</li>
     </ul>
 
-IV. Text Box Page 2, below (We did't talk about it but I was thinking this may increase the drama)
-<TITLE>OPIOID ADDICTION</TITLE>
+<!--IV. Text Box Page 2, below (We did't talk about it but I was thinking this may increase the drama)-->
+<h2>OPIOID ADDICTION</h2>
 You are at a higher <strong>risk of developing dependence</strong> if you: 
 <ul>
     <li> If you have experienced <strong>depression or anxiety</strong>.</li>
