@@ -1,40 +1,48 @@
 I. Text Box Front Page
-Important Information:
-- Use your medication only as prescribed. No more, nor more frequently.
-- Take your medicine with food, don't take it with an empty stomach.
-- Keep away from children. Protect your family! Keep it safe and locked.
-- Once done with your medicine, dispose responsibly of anything that is leftover. 
-
-Your prescription might change your mental acuity, so we suggest you:
-- Don't drive or operate heavy machinery under the effect of your prescribed drug
-- Don't make important or life-changing decisions.
-- Don't combine your medication with alcohol.
-
+<TITLE>Important Information:</TITLE>
+<ul>
+    <li> Use your medication <strong>only as prescribed</strong>. No more, nor more frequently.</li>
+    <li> Take your medicine <strong>with food</strong> , don't take it with an empty stomach.</li>
+    <li> Keep <strong>away from children</strong> . Protect your family! Keep it safe and locked.</li>
+    <li> Once done with your medicine, <strong>dispose responsibly</strong>  of anything that is <strong>leftover</strong>.</li>
+    <li>Your prescription might <strong>change your mental acuity</strong>, so we suggest you:
+        <ul>
+            <li> <strong>Don't</strong> drive or operate heavy machinery under the effect of your prescribed drug</li>
+            <li> <strong>Don't make</strong> important or <strong>life-changing decisions</strong>.</li>
+            <li> <strong>Don't combine your medication with <strong>alcohol</strong>.</li>
+        </ul>
+        </li>
+</ul>
 
 II. Text Box Page 2 on top 
-Responsible use of opioids.
-- Do not take more medicine than the prescribed one, don't take it more frequently than instructed.
-- Disclose all information about all the medicine you take or may take. Side effects can be worse under the influence of additional medicine.
-- Don't drink alcohol while taking opioid pain medicine
-- Be aware of the partial fill. If you feel unease having opioids at home, you can ask for only a part of the prescription at your pharmacists and then ask for the other part if you need it.
-- Your opioid medicine may contain acetaminophen. Don't take more  medicine containing acetaminophen, as it may lead to liver damage.
-- When you don’t need this medicine anymore, safely dispose of anything that is left over. Ask your doctor for a drop box location.
-- As your pain eases, wait longer between each pill. 
-
+<TITLE>Responsible use of opioids.</TITLE>
+<ul>
+    <li> <strong>Don't take more</strong> medicine than the prescribed one, <strong>don't take it more frequently</strong> than instructed.</li> 
+    <li> <strong>Disclose</strong> all information about <strong>all the medicine you take</strong> or may take. Side effects can be worse under the influence of additional medicine. </li> 
+    <li> <strong>Don't drink alcohol</strong> while taking opioid pain medicine. </li> 
+    <li> Be aware of the <strong>partial fill</strong>. If you feel unease having opioids at home, you can ask for only a part of the prescription at your pharmacists and then ask for the other part if you need it.</li> 
+    <li> Your opioid medicine may contain acetaminophen. <strong>Don't take more</strong>  medicine containing <strong>acetaminophen</strong>, as it may lead to liver damage.</li> 
+    <li> <strong>When you don’t need</strong> this medicine anymore, safely <strong>dispose of anything that is left over</strong>. Ask your doctor for a <strong>drop box location</strong>.</li> 
+    <li> As your <strong>pain eases, wait longer</strong> between each pill. </li> 
+</ul>
 
 III. Text Box Page 2, below (We did't talk about it but lets include this)
-The following are common side effects:
-- Feeling sleepy or dizzy.
-- Itching (talk to your doctor if this happens to you)
-- Constipation. Drink plenty of fluids, and talk to your doctor in case you consider there is need for a stool softener.
-- Nausea/Vomiting.
-- Low Energy / Sex Drive
+<TITLE>The following are common side effects:</TITLE>
+<ul>
+    <li>Feeling sleepy or dizzy. </li>
+    <li>Itching, talk to your doctor if this happens to you.</li>
+    <li>Constipation. Drink plenty of fluids, and talk to your doctor in case you consider there is need for a stool softener.</li>
+    <li>Nausea/Vomiting.</li>
+    <li>Low Energy / Sex Drive</li>
+    </ul>
 
 IV. Text Box Page 2, below (We did't talk about it but I was thinking this may increase the drama)
-OPIOID ADDICTION
-You are at a higher risk of developing dependence if you: 
-- If you have experienced depression or anxiety.
-- If you have abused of alcohol, tobacco, or drugs (prescription or street drugs).
-- Have a history of chronic pain.
-- If you take opioids for longer than 1 week.
-- Take more pills, more often, than your doctor prescribed.
+<TITLE>OPIOID ADDICTION</TITLE>
+You are at a higher <strong>risk of developing dependence</strong> if you: 
+<ul>
+    <li> If you have experienced <strong>depression or anxiety</strong>.</li>
+    <li> If you have abused of <strong>alcohol, tobacco, or drugs</strong> (prescription or street drugs).</li>
+    <li> Have a history of <strong>chronic pain</strong>.</li>
+    <li> If you take<strong> opioids for longer than 1 week</strong>.</li>
+    <li> Take <strong>more pills, more often, than</strong> your doctor <strong>prescribed</strong>. </li>
+</ul>
