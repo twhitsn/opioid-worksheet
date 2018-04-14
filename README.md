@@ -22,4 +22,5 @@ Dr. Gabriel Brat
 ## Potential Extensions
 - Include separately or in the same design the Physical Therapy illustrations.
     - This would require creating a bank of images.
-- Change design
+- Often discharge sheets come with the exercises related to Physical Therapy. To include this, illlustrations, or similar visuals should be developed from a bank to be included in one of the available spaces of the Discharge Worksheet we are proposing. 
+
