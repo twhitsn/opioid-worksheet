@@ -1,0 +1,138 @@
+/*************** PAGE ***************/
+
+#formWrapper{
+    display: inline-block;
+}
+
+form, #worksheet{
+    vertical-align: top;
+}
+
+#formWrapper{
+    width: 24%;
+}
+
+#worksheet{
+    display: inline-block;
+    width: 75%;
+}
+
+#page1, #page2{
+    margin: auto;
+    width: 8.5in;
+    height: 11in;
+    border: 1px solid black;
+}
+
+/*************** FORM ***************/
+
+form label{
+    display: block;
+}
+
+form button{
+    margin-top: 20px;
+}
+
+form div label:not(:first-child) {
+    margin-top: 5px;
+}
+
+form h2{
+    margin: .5em 0 .5em 0;
+    font-weight: 600;
+    font-size: 1.2em;
+}
+
+/*************** PAGE1 ***************/
+#page1{
+    position: relative;
+}
+
+#page1 > div{
+    position: absolute;
+}
+
+#page1 h2{
+    margin: 0;
+}
+
+#patientInfo{
+    top: .5in;
+    left: .5in;
+}
+
+#prescriberInfo{
+    top: .5in;
+    left: 4.5in;
+    right: .5in;
+}
+
+#visuals{
+    top: 3in;
+    left: .5in;
+    right: 3in;
+}
+
+#visuals img{
+    height: 2in;
+}
+
+#refillPerc{
+    position: absolute;
+    left: .36in;
+    top: .77in;
+    font-size: .4in;
+}
+
+#importantInfo{
+    top: 3in;
+    left: 4.5in;
+    right: .5in;
+}
+
+#calendar{
+    bottom: .5in;
+}
+
+/*************** PRINT ***************/
+@media print{
+    @page {
+        size: letter;
+        margin: 0;
+    }
+    
+    body *{
+        visibility: hidden;
+    }
+    
+    #worksheet, #worksheet *{
+        visibility: visible;
+    }
+    
+    #worksheet{
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    
+    #page1, #page2{
+        display: block;
+        width: 8.5in;
+        height: 11in;
+        border: 1px solid #FFF;
+    }
+}
+
+/*************** MISC ***************/
+.hide{
+    display: none;
+}
+
+svg{
+    display: block;
+}
+
+body{
+    font-family: 'Open Sans', sans-serif;
+}
