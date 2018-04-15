@@ -2,6 +2,7 @@
 $(function(){
     form.init();
     calendar.init();
+    pain.init();
 
     d3.csv('https://raw.githubusercontent.com/whitstd/opioid-worksheet/master/aggregate_opioid.csv', function(data){
         convert = ['n', 'median_taken', 'q1_taken', 'q3_taken', 'perc_pain_int', 'perc_refill'];

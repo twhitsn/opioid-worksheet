@@ -68,8 +68,8 @@ var form = (function(){
                 
                 console.log(selection);
             
-                _updateRefill(selection);
-                _updatePain(selection);
+                _updateRefill(selection.perc_refill);
+                pain.moveArrow(selection.perc_pain_int);
                 
                 calendar.drawAll(selection, _prescriptions);
             }
@@ -99,19 +99,8 @@ var form = (function(){
         }
     }
 
-    function _updateRefill(selection){
-        var refillPerc = Math.round(selection.perc_refill);
-        $('#refillPerc').text(refillPerc);
-    }
-
-    function _updatePain(selection){
-        var painImgBase = 'images/PainFaces_V02-';
-
-        var painLevel = Math.round(selection.perc_pain_int / 10);
-        painLevel = (painLevel == 0) ? 1 : painLevel
-        painLevel = (painLevel == 10) ? String(painlevel) : '0' + String(painLevel);
-        
-        $('#painImg').attr('src', painImgBase + painLevel + '.png');
+    function _updateRefill(perc_refill){
+        $('#refillPerc').text(Math.round(perc_refill));
     }
 
     // turn form into json object

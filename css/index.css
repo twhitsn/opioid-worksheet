@@ -74,7 +74,7 @@ form h2{
     right: 3in;
 }
 
-#visuals img{
+#refill img{
     height: 2in;
 }
 
@@ -83,6 +83,20 @@ form h2{
     left: .36in;
     top: .77in;
     font-size: .4in;
+}
+
+#pain img{
+    width: .8in;
+}
+
+#pain #arrow{
+    border: solid black;
+    border-width: 0 5px 5px 0;
+    position: absolute;
+    display: block;
+    padding: 5px;
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
 }
 
 #importantInfo{
