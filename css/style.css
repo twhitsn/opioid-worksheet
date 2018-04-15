@@ -22,7 +22,7 @@ form, #worksheet{
     width: 8.5in;
     height: 11in;
     border: 1px solid black;
-    background-image: url("images/Artboard_10.png");
+    background-image: url("../images/Artboard_10.png");
     background-size: cover;
     background-size: 100% 100%
 }
@@ -89,7 +89,7 @@ form h2{
     right: 3in;
 }
 
-#visuals img{
+#refill img{
     height: 2in;
 }
 
@@ -158,7 +158,9 @@ form h2{
 }
 
 /*************** MISC ***************/
-
+.hide{
+    display: none;
+}
 
 svg{
     display: block;
