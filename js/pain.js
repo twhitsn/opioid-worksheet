@@ -1,5 +1,6 @@
 var pain = (function(){
     var _div = null;
+    var _maxPain = 50;
     
     function init(){
         _div = d3.select('#pain');
@@ -21,7 +22,7 @@ var pain = (function(){
     }
     
     function moveArrow(perc_pain_int){
-        $('#arrow').css('margin-left', $('#pain').width() * (perc_pain_int / 100) + 'px');
+        $('#arrow').css('margin-left', $('#pain').width() * (perc_pain_int / _maxPain) + 'px');
     }
     
     return{
