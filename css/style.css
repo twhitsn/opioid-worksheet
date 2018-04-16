@@ -22,9 +22,6 @@ form, #worksheet{
     width: 8.5in;
     height: 11in;
     border: 1px solid black;
-    background-image: url("../images/Artboard_10.png");
-    background-size: cover;
-    background-size: 100% 100%
 }
 
 /*************** FORM ***************/
@@ -58,29 +55,35 @@ form h2{
 
 #page1 h2{
     margin: 0;
+    margin-bottom: .25in;
+    font-weight: normal;
 }
 
 #patientInfo{
-    top: .5in;
-    left: .5in;
-    border-radius: 25px;
-    border: 1px solid #024458;
-    padding: 20px; 
-    background-color: #DAF5FD;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    text-align: center;
+    height: 1in;
+    width: 6.3in;
+    padding: .1in;
+    top: 0;
+    left: 0;
+    background-color: #0277BD;
+    color: white;
 }
 
 #prescriberInfo{
-    top: .5in;
-    left: 4.5in;
-    right: .5in;
-    border-radius: 25px;
-    border: 1px solid #024458;
-    padding: 20px; 
-    background-color: #DAF5FD;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    text-align: center;
+    height: 0;
+    width: 0;
+    right: 0;
+    /*width: 6in;
+    padding: .1in;
+    top: 0;
+    left: 2.5in;
+    background-color: #039BE5;*/
+    color: white;
+    
+    /* angled side*/
+    border-right: 5in solid #039BE5;
+    border-left: 1in solid transparent;
+    border-top: 1.5in solid #039BE5;
 }
 
 #visuals{
@@ -89,8 +92,18 @@ form h2{
     right: 3in;
 }
 
+#refill{
+    width: 3.5in;
+}
+
 #refill img{
-    height: 2in;
+    height: 1in;
+    float: left;
+}
+
+#refill span{
+    width: 2.5in;
+    float: right;
 }
 
 #refillPerc{
@@ -100,8 +113,13 @@ form h2{
     font-size: .4in;
 }
 
+#pain{
+    clear: both;
+    margin-top: 1.5in;
+}
+
 #pain img{
-    width: .8in;
+    width: .6in;
 }
 
 #pain #arrow{
