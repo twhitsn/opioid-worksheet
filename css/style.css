@@ -56,7 +56,11 @@ form h2{
 #page1 h2{
     margin: 0;
     margin-bottom: .25in;
-    font-weight: normal;
+    color: #039BE5;
+}
+
+#header h2{
+    color: white;
 }
 
 #patientInfo{
@@ -65,11 +69,20 @@ form h2{
     padding: .1in;
     top: 0;
     left: 0;
+    line-height: 1in;
     background-color: #0277BD;
     color: white;
 }
 
+#patientInfo h2{
+    vertical-align: middle;
+    margin-left: .25in;
+}
+
 #prescriberInfo{
+    position: absolute;
+    left: 2.5in;
+    top: 0;
     height: 0;
     width: 0;
     right: 0;
@@ -97,12 +110,12 @@ form h2{
 }
 
 #refill img{
-    height: 1in;
+    height: 1.5in;
     float: left;
 }
 
 #refill span{
-    width: 2.5in;
+    width: 2in;
     float: right;
 }
 
@@ -115,11 +128,12 @@ form h2{
 
 #pain{
     clear: both;
-    margin-top: 1.5in;
+    margin-top: 2in;
 }
 
 #pain img{
     width: .6in;
+    padding: .025in;
 }
 
 #pain #arrow{
@@ -136,6 +150,9 @@ form h2{
     top: 3in;
     left: 4.5in;
     right: .5in;
+    background-color: #E9E9E9;
+    padding: .1in;
+    border-radius: .1in;
 }
 
 #importantInfo ul{
