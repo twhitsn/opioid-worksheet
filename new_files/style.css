@@ -1,0 +1,203 @@
+/*************** PAGE ***************/
+
+#formWrapper{
+    display: inline-block;
+}
+
+form, #worksheet{
+    vertical-align: top;
+}
+
+#formWrapper{
+    width: 24%;
+}
+
+#worksheet{
+    display: inline-block;
+    width: 75%;
+}
+
+#page1, #page2{
+    margin: auto;
+    width: 8.5in;
+    height: 11in;
+    border: 1px solid black;
+    background-image: url("../images/Artboard_10.png");
+    background-size: cover;
+    background-size: 100% 100%
+}
+
+/*************** FORM ***************/
+
+form label{
+    display: block;
+}
+
+form button{
+    margin-top: 20px;
+}
+
+form div label:not(:first-child) {
+    margin-top: 5px;
+}
+
+form h2{
+    margin: .5em 0 .5em 0;
+    font-weight: 600;
+    font-size: 1.2em;
+}
+
+/*************** PAGE1 ***************/
+#page1{
+    position: relative;
+}
+
+
+
+#patientInfo{
+    top: .5in;
+    left: .5in;
+    border-radius: 25px;
+    border: 1px solid #024458;
+    padding: 20px; 
+    background-color: #DAF5FD;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+}
+
+#prescriberInfo{
+    top: .5in;
+    left: 4.5in;
+    right: .5in;
+    border-radius: 25px;
+    border: 1px solid #024458;
+    padding: 20px; 
+    background-color: #DAF5FD;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+}
+
+#visuals{
+    top: 3in;
+    left: .5in;
+    right: 3in;
+}
+
+#refill img{
+    height: 2in;
+}
+
+#refillPerc{
+    position: absolute;
+    left: 20.5%;
+    top: 21.5%;
+    font-size: .4in;
+}
+
+#pain img{
+    width: 0.7in;
+}
+
+ul {
+    text-align: left;
+    list-style-image:url("http://upload.wikimedia.org/wikipedia/commons/1/19/Icons-mini-icon_attachment.gif");
+}
+
+#pain #arrow{
+    border: solid black;
+    border-width: 0 5px 5px 0;
+    position: absolute;
+    display: block;
+    padding: 5px;
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+}
+
+#importantInfo{
+    top: 3in;
+    left: 4.5in;
+    right: .5in;
+}
+
+#importantInfo h2{
+    text-align: center;
+}
+
+#calendar{
+    bottom: .5in;
+}
+
+.eachBox{
+    top: .5in;
+    left: .5in;
+    border-radius: 10px;
+    padding:5px;
+    margin:5px;
+    background-color: #DAF5FD;
+    text-align: center;
+}
+
+.font-headings {
+    font-size: 25px;
+    text-align: center;
+    font-family: 'Open Sans';
+    font-weight: bold;
+}
+/*************** PRINT ***************/
+@media print{
+    @page {
+        size: letter;
+        margin: 0;
+    }
+    
+    body *{
+        visibility: hidden;
+    }
+    
+    #worksheet, #worksheet *{
+        visibility: visible;
+    }
+    
+    #worksheet{
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    
+    #page1, #page2{
+        display: block;
+        width: 8.5in;
+        height: 11in;
+        border: 1px solid #FFF;
+    }
+}
+
+/*************** MISC ***************/
+.hide{
+    display: none;
+}
+
+svg{
+    display: block;
+}
+
+body{
+    font-family: 'Open Sans', sans-serif;
+    color: #024458;
+}
+
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 10px;
+  background-color: #2196F3;
+  padding: 10px;
+}
+
+.grid-container>div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding:20px 0;
+  font-size: 30px;
+}
