@@ -19,6 +19,7 @@ Dr. Gabriel Brat
 - [ ] Error handling if incompatible fields are selected
 - [ ] Error handling - start date before current day
 - [ ] Timezone issues
+- [ ] Should work in grayscale
 
 ## Potential Extensions
 - Include separately or in the same design the Physical Therapy illustrations.
