@@ -2,7 +2,7 @@ var calendar = (function(){
     var _days = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
 
     var _colors = [
-        '#9E9E9E', // gray
+        '#607D8B', // gray
         '#81C784', // green
         '#FFF176', // yellow
         '#E57373' // red
@@ -12,7 +12,7 @@ var calendar = (function(){
     
     // gap between days (inches)
     var _cellGap = 0.1,
-        _calGap = 0.5;
+        _calGap = 0.25;
 
     var _cellsPerRow = 7,
         _cellsPerCol = 4,
@@ -51,7 +51,7 @@ var calendar = (function(){
         drawing.selectAll('text')
             .data(function(d){ return Array.apply(null, {length: 7}).map(Number.call, Number); }) // create array from start - finish for calendar
             .enter().append('text')
-                .attr('stroke', _colors[0])
+                .attr('stroke', 'black')
                 .attr('x', function(d){ return String(startX + (d % _cellsPerRow) * _cellSize + ((d % _cellsPerRow) * _cellGap) + _cellSize / 2) + 'in'; })
                 .attr('y', function(d){ return '.25in'; })
                 .attr('text-anchor', 'middle')

@@ -138,8 +138,27 @@ form h2{
     right: .5in;
 }
 
+#importantInfo ul{
+    padding-left: .2in;
+}
+
 #calendar{
-    bottom: .5in;
+    left: .5in;
+    right: .5in;
+    background-color: #E9E9E9;
+    border-radius: .1in;
+    bottom: 1in;
+}
+
+#calendar svg{
+    margin-left: .25in;
+}
+
+#footer{
+    bottom: 0;
+    height: .5in;
+    width: 100%;
+    background-color: #039BE5;
 }
 
 /*************** PRINT ***************/
@@ -174,10 +193,6 @@ form h2{
 /*************** MISC ***************/
 .hide{
     display: none;
-}
-
-svg{
-    display: block;
 }
 
 body{
