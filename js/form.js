@@ -9,6 +9,8 @@ var form = (function(){
         'oxymorphone': 3
     };
     
+    var _defaultPatient = 'Patient X';
+    
     var _$worksheetInput = null;
     var _csv = null
     
@@ -37,12 +39,18 @@ var form = (function(){
         for(key in params){
             var $elem = _$worksheetInput.find(':input[name="' + key +'"]')
             
-            $elem.val([params[key]]);
+            if(key != 'patientName'){
+                $elem.val([params[key]]);
+            } else{
+                $elem.val(_defaultPatient);
+            }
             
             if($elem[0].nodeName == 'SELECT'){
                 $elem.change();
             }
         }
+        
+        $('#patientName').val(_defaultPatient);
         
         $('#updateBtn').click();
     }
@@ -124,7 +132,9 @@ var form = (function(){
             var params = _jsonify(_$worksheetInput);
             
             for(key in params){
-                url += key + '=' + params[key] + '&';
+                if(key != 'patientName'){
+                    url += key + '=' + params[key] + '&';
+                }
             }
             
             $('#permalinkText').text(url);
