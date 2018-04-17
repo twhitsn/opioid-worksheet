@@ -260,6 +260,11 @@ form h2{
 #calendar #prescription{
     position: absolute;
     left: 4.5in;
+    right: .25in;
+}
+
+#calendar #prescription h3{
+    color: #0277BD;
 }
 
 /************************************************************  
