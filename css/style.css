@@ -134,6 +134,10 @@ form h2{
     left: .25in;
 }
 
+#visuals > div{
+    width: 3.5in;
+}
+
 /************************************************************  
                             REFILL 
 ************************************************************/
@@ -164,8 +168,9 @@ form h2{
 ************************************************************/
 
 #pain{
+    position: absolute;
     clear: both;
-    margin-top: 1.75in;
+    top: 2.5in;
 }
 
 #pain img{
@@ -181,6 +186,11 @@ form h2{
     padding: 5px;
     transform: rotate(-135deg);
     -webkit-transform: rotate(-135deg);
+}
+
+#pain div{
+    position: absolute;
+    top: 1.5in;
 }
 
 /************************************************************  
