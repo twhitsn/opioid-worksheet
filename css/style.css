@@ -165,7 +165,7 @@ form h2{
 
 #pain{
     clear: both;
-    margin-top: 2in;
+    margin-top: 1.75in;
 }
 
 #pain img{
@@ -223,13 +223,12 @@ form h2{
 }
 
 #calendar #legend{
-
-}
-
-#calendar #legend ul{
     position: absolute;
     left: 5.75in;
     top: .65in;
+}
+
+#calendar #legend ul{
     list-style-type: none;
 }
 
