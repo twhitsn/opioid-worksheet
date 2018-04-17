@@ -68,7 +68,7 @@ var form = (function(){
                 
                 console.log(selection);
             
-                _updateRefill(selection.perc_refill);
+                _updateText(selection);
                 pain.moveArrow(selection.perc_pain_int);
                 
                 calendar.drawAll(selection, _prescriptions);
@@ -77,7 +77,7 @@ var form = (function(){
         
         $('#clearBtn').click(function(evt){
             _$worksheetInput.trigger('reset');
-            $('#refillPerc').text('');
+            _clearText();
             $('#painImg').removeAttr('src');
             $('#calendar').empty();
             $('#approachSelect').empty();
@@ -98,9 +98,29 @@ var form = (function(){
             $select.append($('<option>').html(options[i]));
         }
     }
-
-    function _updateRefill(perc_refill){
-        $('#refillPerc').text(Math.round(perc_refill));
+    
+    function _updateText(selection){
+        /* Updates text in elements with "updateText" class
+        the next class in the class will be the field the text is updated with
+        
+        example:
+        
+            <span class="updateText perc_refill"></span>
+        
+        will update with perc_refill field.
+        */
+        $('.updateText').each(function(i, item){
+            $item = $(item);
+            var formValue = selection[$item[0].classList[1]];
+            formValue = isNaN(formValue) ? formValue : Math.round(formValue);
+            $item.text(formValue);
+        });
+    }
+    
+    function _clearText(){
+        $('.updateText').each(function(i, item){
+            $item.text('');
+        });
     }
 
     // turn form into json object

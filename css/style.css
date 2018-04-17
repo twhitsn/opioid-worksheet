@@ -1,4 +1,6 @@
-/*************** PAGE ***************/
+/************************************************************  
+                            FORM 
+************************************************************/
 
 #formWrapper{
     display: inline-block;
@@ -24,8 +26,6 @@ form, #worksheet{
     border: 1px solid black;
 }
 
-/*************** FORM ***************/
-
 form label{
     display: block;
 }
@@ -44,66 +44,99 @@ form h2{
     font-size: 1.2em;
 }
 
-/*************** PAGE1 ***************/
+/************************************************************  
+                            PAGE1 
+************************************************************/
 #page1{
     position: relative;
 }
 
 #page1 > div{
     position: absolute;
+    z-index: 1;
 }
 
 #page1 h2{
     margin: 0;
-    margin-bottom: .25in;
-    color: #039BE5;
 }
 
+/************************************************************  
+                            HEADER 
+************************************************************/
+
 #header h2{
+    position: absolute;
+    top: .3in;
     color: white;
 }
 
 #patientInfo{
-    height: 1in;
+    position: absolute;
+    height: .75in;
     width: 6.3in;
     padding: .1in;
     top: 0;
     left: 0;
-    line-height: 1in;
     background-color: #0277BD;
     color: white;
 }
 
 #patientInfo h2{
-    vertical-align: middle;
     margin-left: .25in;
 }
 
-#prescriberInfo{
+#header #right{
     position: absolute;
-    left: 2.5in;
+    left: 2.88in;
     top: 0;
     height: 0;
     width: 0;
     right: 0;
-    /*width: 6in;
-    padding: .1in;
-    top: 0;
-    left: 2.5in;
-    background-color: #039BE5;*/
-    color: white;
-    
+
     /* angled side*/
     border-right: 5in solid #039BE5;
-    border-left: 1in solid transparent;
-    border-top: 1.5in solid #039BE5;
+    border-left: .625in solid transparent;
+    border-top: 1.25in solid #039BE5;
 }
+
+#prescriberInfo{
+    position: absolute;
+    width: 4.5in;
+    color: white;
+    top: .25in;
+    left: 4in;
+}
+
+#prescriberInfo h2{
+    margin-top: -.25in;
+}
+
+#prescriberInfo > span{
+    display: block;
+    position: absolute;
+    top: .65in;
+}
+
+#page1 h1{
+    top: 1.5in;
+    position: absolute;
+    left: .25in;
+    font-size: .3in;
+    color: #0277BD;
+}
+
+/************************************************************  
+                     LEFT SIDE/VISUALS 
+************************************************************/
 
 #visuals{
     top: 3in;
-    left: .5in;
-    right: 3in;
+    left: .25in;
 }
+
+/************************************************************  
+                            REFILL 
+************************************************************/
 
 #refill{
     width: 3.5in;
@@ -114,17 +147,21 @@ form h2{
     float: left;
 }
 
-#refill span{
+#refill > span{
     width: 2in;
     float: right;
 }
 
 #refillPerc{
-    position: absolute;
-    left: .23in;
-    top: 1.17in;
+    position: relative;
+    left: -.78in;
+    top: .58in;
     font-size: .30in;
 }
+
+/************************************************************  
+                            PAIN 
+************************************************************/
 
 #pain{
     clear: both;
@@ -146,10 +183,14 @@ form h2{
     -webkit-transform: rotate(-135deg);
 }
 
+/************************************************************  
+                       IMPORTANT INFO 
+************************************************************/
+
 #importantInfo{
-    top: 3in;
-    left: 4.5in;
-    right: .5in;
+    top: 2.7in;
+    left: 4.75in;
+    right: .25in;
     background-color: #E9E9E9;
     padding: .1in;
     border-radius: .1in;
@@ -157,14 +198,24 @@ form h2{
 
 #importantInfo ul{
     padding-left: .2in;
+    margin: 0;
 }
 
+#importantInfo ul li:not(:last-child){
+    margin-bottom: .1in;
+}
+
+/************************************************************  
+                         CALENDAR 
+************************************************************/
+
 #calendar{
-    left: .5in;
-    right: .5in;
+    height: 2.25in;
+    left: .25in;
+    right: .25in;
     background-color: #E9E9E9;
     border-radius: .1in;
-    bottom: 1in;
+    bottom: .75in;
 }
 
 #calendar svg{
@@ -178,7 +229,9 @@ form h2{
     background-color: #039BE5;
 }
 
-/*************** PRINT ***************/
+/************************************************************  
+                       PRINT PAGE 
+************************************************************/
 @media print{
     @page {
         size: letter;
@@ -207,12 +260,53 @@ form h2{
     }
 }
 
-/*************** MISC ***************/
+/************************************************************  
+                         MISC/ALL
+************************************************************/
 .hide{
     display: none;
 }
 
 body{
     font-family: 'Open Sans', sans-serif;
-    color: #024458;
+}
+
+h2.left:before{
+    content: '';
+    position: absolute;
+    height: 0;
+    width: 0;
+    top: -.05in;
+    left: -.25in;
+    border-right: .25in solid transparent;
+    border-left: 4in solid #039BE5;
+    border-bottom: .5in solid #039BE5;
+    z-index: -1;
+}
+
+
+/*h2.right:before{
+    content: '';
+    position: absolute;
+    height: 0;
+    width: 0;
+    top: -.05in;
+    right: -.35in;
+    border-right: 4in solid #039BE5;
+    border-left: .25in solid transparent;
+    border-top: .5in solid #039BE5;
+    z-index: -1;
+}*/
+
+#page1 h2.right{
+    color: #039BE5;
+    padding: 0 0 .1in .1in;
+}
+
+#page1 h2.left{
+    position: relative;
+    top: -.25in;
+    color: white;
+    text-align: center;
+    width: fit-content;
 }
