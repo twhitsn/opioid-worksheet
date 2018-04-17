@@ -135,8 +135,12 @@ var form = (function(){
                     url += key + '=' + params[key] + '&';
                 }
             }
-            
-            $('#permalinkText').text(url);
+            $text = $('#permalinkText');
+            $('#permalinkText').text(url)
+            $text.show();
+            $text[0].select();
+            document.execCommand('copy');
+            $text.hide();
         });
     }
 
