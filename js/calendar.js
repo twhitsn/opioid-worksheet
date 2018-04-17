@@ -28,7 +28,7 @@ var calendar = (function(){
     }
     
     function drawAll(selection, prescriptions){
-        var mmePerDay = prescriptions[selection.prescriptionDrug] * selection.prescriptionAmount;
+        var mmePerDay = prescriptions[selection.prescriptionDrug] * selection.prescriptionAmount * selection.prescriptionPerDay;
         var offsetDays = new Date($('#prescriptionStartDate').val()).getDay();
         
         _clear(); // clear old svg
@@ -66,7 +66,7 @@ var calendar = (function(){
                 .attr('x', function(d){ return String(startX + (d % _cellsPerRow) * _cellSize + ((d % _cellsPerRow) * _cellGap)) + 'in'; })
                 .attr('y', function(d){ return String((Math.floor(d / _cellsPerRow) + 1) * _cellSize + (Math.floor(d / _cellsPerRow) * _cellGap) + _cellGap) + 'in'; });
                 
-        svg.attr('height', 180); //FIXME: arbitrary, fix
+        svg.attr('height', 180); //FIXME: arbitrary
 
         _calendar.selectAll('rect')
             .attr('stroke', _colors[0])
