@@ -21,7 +21,7 @@ var form = (function(){
         
         if(url.includes('?')){
             var paramString = url.split('?')[1];
-            params = {};
+            var params = {};
             paramString = paramString.split('&');
             
             for(var i = 0, imax = paramString.length; i < imax; i++){
@@ -34,7 +34,6 @@ var form = (function(){
     }
     
     function _populateForm(params){
-        console.log(params);
         for(key in params){
             var $elem = _$worksheetInput.find(':input[name="' + key +'"]')
             
@@ -118,6 +117,17 @@ var form = (function(){
         
         $('#printBtn').click(function(evt){
             window.print();
+        });
+        
+        $('#copyPermalink').click(function(evt){
+            var url = window.location.pathname + '?'; 
+            var params = _jsonify(_$worksheetInput);
+            
+            for(key in params){
+                url += key + '=' + params[key] + '&';
+            }
+            
+            $('#permalinkText').text(url);
         });
     }
 

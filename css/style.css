@@ -130,7 +130,7 @@ form h2{
 ************************************************************/
 
 #visuals{
-    top: 3in;
+    top: 5.25in;
     left: .25in;
 }
 
@@ -188,7 +188,7 @@ form h2{
 ************************************************************/
 
 #importantInfo{
-    top: 2.7in;
+    top: 5in;
     left: 4.75in;
     right: .25in;
     background-color: #E9E9E9;
@@ -210,6 +210,8 @@ form h2{
 ************************************************************/
 
 #calendar{
+    position: absolute;
+    top: 2.25in;
     height: 2.25in;
     left: .25in;
     right: .25in;

@@ -37,7 +37,6 @@ var calendar = (function(){
             .attr('width', _calWidth); //FIXME; arbitrary
 
         _drawOne(0, svg, selection, mmePerDay, offsetDays);
-        _drawOne(1, svg, selection, mmePerDay, offsetDays);
     }
     
     function _clear(){
