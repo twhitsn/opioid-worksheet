@@ -18,6 +18,9 @@ Dr. Gabriel Brat
 - [X] Fix calendar svg sizing
 - [ ] Include inputs to set how long the prescription lasts and make it noticeable in the calendar.
 - [ ] Label the border of the faces in the pain scale.
+- [ ] Second page fitting.
+- [ ] Second page include CDC illustrations.
+- [ ] Second page include CDC design.
 
 ## Potential Extensions
 - Include separately or in the same design the Physical Therapy illustrations.
