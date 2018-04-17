@@ -322,20 +322,6 @@ h2.left:before{
     z-index: -1;
 }
 
-
-/*h2.right:before{
-    content: '';
-    position: absolute;
-    height: 0;
-    width: 0;
-    top: -.05in;
-    right: -.35in;
-    border-right: 4in solid #039BE5;
-    border-left: .25in solid transparent;
-    border-top: .5in solid #039BE5;
-    z-index: -1;
-}*/
-
 #page1 h2.right{
     color: #039BE5;
     padding: 0 0 .1in .1in;

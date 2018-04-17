@@ -15,6 +15,38 @@ var form = (function(){
     function init(){
         _$worksheetInput = $('#worksheetInput');
     }
+    
+    function _checkURL(){
+        var url = document.URL;
+        
+        if(url.includes('?')){
+            var paramString = url.split('?')[1];
+            params = {};
+            paramString = paramString.split('&');
+            
+            for(var i = 0, imax = paramString.length; i < imax; i++){
+                var kv = paramString[i].split('=');
+                params[kv[0]] = unescape(kv[1]);
+            }
+            
+            _populateForm(params);
+        }
+    }
+    
+    function _populateForm(params){
+        console.log(params);
+        for(key in params){
+            var $elem = _$worksheetInput.find(':input[name="' + key +'"]')
+            
+            $elem.val([params[key]]);
+            
+            if($elem[0].nodeName == 'SELECT'){
+                $elem.change();
+            }
+        }
+        
+        $('#updateBtn').click();
+    }
 
     function fill(csv){
         _csv = csv;
@@ -39,6 +71,7 @@ var form = (function(){
         }
         
         _addEvents();
+        _checkURL();
     }
     
     function _addEvents(){
