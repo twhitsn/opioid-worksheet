@@ -31,3 +31,7 @@ Dr. Gabriel Brat
 - [ ] Error handling - start date before current day
 - [ ] Timezone issues
 - [ ] Should work in grayscale
+
+## Technical
+
+- [ ] Colors as global variable

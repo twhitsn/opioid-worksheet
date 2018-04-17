@@ -70,7 +70,6 @@ var form = (function(){
             
                 _updateText(selection);
                 pain.moveArrow(selection.perc_pain_int);
-                
                 calendar.drawAll(selection, _prescriptions);
             }
         });
@@ -90,6 +89,7 @@ var form = (function(){
     }
 
     function _populateSelect(id, options, empty = false){
+        // populate selection element with options
         var $select = $('#' + id);
         
         if(empty){ $select.empty(); }

@@ -2,7 +2,7 @@ var calendar = (function(){
     var _days = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
 
     var _colors = [
-        '#607D8B', // gray
+        '#424242', // gray
         '#81C784', // green
         '#FFF176', // yellow
         '#E57373' // red

@@ -222,6 +222,45 @@ form h2{
     margin-left: .25in;
 }
 
+#calendar #legend{
+
+}
+
+#calendar #legend ul{
+    position: absolute;
+    left: 5.75in;
+    top: .65in;
+    list-style-type: none;
+}
+
+#calendar #legend ul li div{
+    display: inline-block;
+    height: .23in;
+    width: .23in;
+    border: 1px solid #424242; 
+}
+
+#calendar #legend ul li{
+    margin-bottom: .1in;
+}
+
+#calendar #legend ul li:nth-child(1) div{
+    background-color: #81C784;
+}
+
+#calendar #legend ul li:nth-child(2) div{
+    background-color: #FFF176;
+}
+
+#calendar #legend ul li:nth-child(3) div{
+    background-color: #E57373;
+}
+
+
+/************************************************************  
+                         FOOTER 
+************************************************************/
+
 #footer{
     bottom: 0;
     height: .5in;
