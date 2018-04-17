@@ -257,6 +257,10 @@ form h2{
     background-color: #E57373;
 }
 
+#calendar #prescription{
+    position: absolute;
+    left: 4.5in;
+}
 
 /************************************************************  
                          FOOTER 

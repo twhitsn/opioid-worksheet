@@ -51,7 +51,6 @@ var form = (function(){
         }
         
         $('#patientName').val(_defaultPatient);
-        
         $('#updateBtn').click();
     }
 

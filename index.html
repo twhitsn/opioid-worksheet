@@ -55,7 +55,8 @@
             <div>
                 <h2>Prescription</h2>
                 <select id="prescriptionDrug" name="prescriptionDrug"></select>
-                <label>Amount: <input id="prescriptionAmount" type="text" name="prescriptionAmount" required=""> mg/day</label>
+                <label>Amount: <input id="prescriptionAmount" type="text" name="prescriptionAmount" required=""> mg</label>
+                <label>Per day: <input id="prescriptionPerDay" type="text" name="prescriptionPerDay" required=""></label>
                 <label>Start: <input id="prescriptionStartDate" type="date" name="prescriptionStartDate" required=""></label>
             </div>
         </form>
@@ -88,6 +89,15 @@
                         <li><div></div> Good</li>
                         <li><div></div> Okay</li>
                         <li><div></div> Bad</li>
+                    </ul>
+                </div>
+                <div id="prescription">
+                    <h3>Prescription</h3>
+                    <ul>
+                        <li>
+                            <span class="updateText prescriptionDrug"></span> <span class="updateText prescriptionAmount"></span>mg <span class="updateText prescriptionPerDay"></span>x per day
+                        </li>
+                        <li>Please remember: You are free to take all of your prescription. However, you are always free to take <strong>less</strong>.</li>
                     </ul>
                 </div>
             </div>
