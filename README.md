@@ -16,6 +16,7 @@ Dr. Gabriel Brat
 - [X] Make "approach" dependent upon surgery type in form
 - [X] Save file as PDF
 - [X] Fix calendar svg sizing
+- [ ] Bring patient information and prescriber information inputs on the sheet.
 - [ ] Include inputs to set how long the prescription lasts and make it noticeable in the calendar.
 - [ ] Label the border of the faces in the pain scale.
 - [ ] Second page fitting.
