@@ -117,12 +117,21 @@ form h2{
     top: .65in;
 }
 
-#page1 h1{
-    top: 1in;
+/************************************************************  
+                        TITLE 
+************************************************************/
+
+#title{
+    top: 1.25in;
     position: absolute;
     left: .25in;
-    font-size: .3in;
+     
+}
+
+#title h2{
+    font-size: .3in; 
     color: #0277BD;
+    margin-bottom: .1in;
 }
 
 /************************************************************  
@@ -130,7 +139,7 @@ form h2{
 ************************************************************/
 
 #visuals{
-    top: 5.25in;
+    top: 5.75in;
     left: .25in;
 }
 
@@ -198,7 +207,7 @@ form h2{
 ************************************************************/
 
 #importantInfo{
-    top: 5in;
+    top: 5.5in;
     left: 4.75in;
     right: .25in;
     background-color: #E9E9E9;
@@ -221,7 +230,7 @@ form h2{
 
 #calendar{
     position: absolute;
-    top: 2.25in;
+    top: 2.75in;
     height: 2.25in;
     left: .25in;
     right: .25in;
