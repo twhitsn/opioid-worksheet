@@ -17,6 +17,7 @@ Dr. Gabriel Brat
 - [X] Save file as PDF
 - [X] Fix calendar svg sizing
 - [ ] Include inputs to set how long the prescription lasts and make it noticeable in the calendar.
+- [ ] Label the border of the faces in the pain scale.
 
 ## Potential Extensions
 - Include separately or in the same design the Physical Therapy illustrations.
