@@ -35,3 +35,4 @@ Dr. Gabriel Brat
 ## Technical
 
 - [ ] Colors as global variable
+- [ ] Form/worksheet does not clear properly
