@@ -127,7 +127,6 @@ var form = (function(){
         });
         
         $('#copyPermalink').click(function(evt){
-            console.log(window.location);
             var url = window.location.origin + window.location.pathname + '?'; 
             var params = _jsonify(_$worksheetInput);
             
