@@ -69,7 +69,15 @@ var calendar = (function(){
         svg.attr('height', 180); //FIXME: arbitrary
 
         _calendar.selectAll('rect')
-            .attr('stroke', _colors[0])
+            .attr('stroke', function(d, i, n){
+                i = i - offsetDays;
+                
+                if(i < 0){
+                    return 'transparent';
+                } else{
+                    return _colors[0];
+                }
+            })
             .attr('fill', function(d, i, n){
             
                 i = i - offsetDays;
@@ -77,7 +85,7 @@ var calendar = (function(){
                 var curMme = i * mmePerDay;
                 
                 if(i < 0){
-                    return _colors[0];
+                    return 'transparent';
                 }else if(curMme < selection.median_taken){
                     return _colors[1];
                 } else if(curMme < selection.q3_taken){
