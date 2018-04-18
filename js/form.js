@@ -135,6 +135,8 @@ var form = (function(){
                     url += key + '=' + params[key] + '&';
                 }
             }
+            
+            url = url.slice(0, -1) // remove trailing &
             $text = $('#permalinkText');
             $('#permalinkText').text(url)
             $text.show();
