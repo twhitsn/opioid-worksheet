@@ -246,7 +246,7 @@ form h2{
 #calendar #legend{
     position: absolute;
     left: 2.5in;
-    top: .65in;
+    top: .52in;
 }
 
 #calendar #legend ul{
@@ -257,11 +257,12 @@ form h2{
     display: inline-block;
     height: .23in;
     width: .23in;
-    border: 1px solid #424242; 
+    border: 1px solid #424242;
+    text-align: center;
 }
 
 #calendar #legend ul li{
-    margin-bottom: .1in;
+    margin-bottom: .05in;
 }
 
 #calendar #legend ul li:nth-child(1) div{

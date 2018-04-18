@@ -1,5 +1,8 @@
 # Personalized Post-Surgery Opioid Risk Mitigation and Teaching
 
+Live page [here](http://whitstd.github.io/opioid-worksheet)
+Live example [here]()
+
 ## Project Client
 
 Dr. Gabriel Brat

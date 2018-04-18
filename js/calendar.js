@@ -79,9 +79,7 @@ var calendar = (function(){
                 }
             })
             .attr('fill', function(d, i, n){
-            
                 i = i - offsetDays;
-                
                 var curMme = i * mmePerDay;
                 
                 if(i < 0){
@@ -94,6 +92,25 @@ var calendar = (function(){
                     return _colors[3];
                 }
             });
+            
+        // X marks the spot... for where the prescription ends
+        var d = +selection.prescriptionTotalDays + offsetDays - 1;
+        var x = (d % _cellsPerRow) * _cellSize + ((d % _cellsPerRow) * _cellGap);
+        var y = (Math.floor(d / _cellsPerRow) + 1) * _cellSize + (Math.floor(d / _cellsPerRow) * _cellGap) + _cellGap;
+        
+        drawing.append('line')
+            .attr('stroke', 'black')
+            .attr('x1', x + 'in')
+            .attr('y1', y + 'in')
+            .attr('x2', x + _cellSize + 'in')
+            .attr('y2', y + _cellSize + 'in')
+            
+        drawing.append('line')
+            .attr('stroke', 'black')
+            .attr('x1', x + 'in')
+            .attr('y1', y + _cellSize + 'in')
+            .attr('x2', x + _cellSize + 'in')
+            .attr('y2', y + 'in')
     }
     
     return {
