@@ -6,6 +6,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <!--<link rel="stylesheet" href="css/index.css">-->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/design.css">
     <script
         src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -55,10 +56,10 @@
             <div>
                 <h2>Prescription</h2>
                 <select id="prescriptionDrug" name="prescriptionDrug"></select>
-                <label>Amount: <input id="prescriptionAmount" type="text" name="prescriptionAmount" required=""> mg</label>
-                <label>Per day: <input id="prescriptionPerDay" type="text" name="prescriptionPerDay" required=""></label>
-                <label>Start: <input id="prescriptionStartDate" type="date" name="prescriptionStartDate" required=""></label>
-                <label>Total Days: <input id="prescriptionTotalDays" type="text" name="prescriptionTotalDays" required=""></label>
+                <label>Dosage weight <input id="prescriptionAmount" type="text" name="prescriptionAmount" required=""> mg</label>
+                <label>Pills per day <input id="prescriptionPerDay" type="text" name="prescriptionPerDay" required=""> pills</label>
+                <label>Start date <input id="prescriptionStartDate" type="date" name="prescriptionStartDate" required=""></label>
+                <label>Total Days <input id="prescriptionTotalDays" type="text" name="prescriptionTotalDays" required=""></label>
             </div>
         </form>
         
@@ -112,7 +113,7 @@
                     <h2 class="left">Refill Information</h2>
                     <img src="images/Bottles_V02-01.png"/>
                     <div id="refillPerc" class="updateText perc_refill">0</div>
-                    <span><span class="updateText perc_refill"></span>% of patients needed a refill on their prescriptions after their <span class="updateText surgery_bin"></span>.</span>
+                    <span><span class="updateText perc_refill"></span>% of patients needed a refill on their prescriptions after finishing their medication<span class="updateText surgery_bin"></span>.</span>
                 </div>
                 <div id="pain">
                     <h2 class="left">Pain Scale</h2>
@@ -125,8 +126,16 @@
                 <div>
                     <ul>
                         <li>Use the medication only as prescribed. Take with food.</li>
+                        <img id="icon" src="https://github.com/whitstd/opioid-worksheet/raw/master/Icons/PNG/Icons_Color-11.png"/>
+                        <img id="icon" src="https://github.com/whitstd/opioid-worksheet/raw/master/Icons/PNG/Icons_Color-12.png"/>
                         <li>Do not drive or use any type of heavy machinery, drink alcohol, make any life-changing decisions (i.e. sign a will) or participate in activities that require a lot of physical skill, as narcotics may change your mental acuity.</li>
+                        <img id="icon" src="https://github.com/whitstd/opioid-worksheet/raw/master/Icons/PNG/Icons_Color-05.png"/>
+                        <img id="icon" src="https://github.com/whitstd/opioid-worksheet/raw/master/Icons/PNG/Icons_Color-01.png"/>
+                        <img id="icon" src="https://github.com/whitstd/opioid-worksheet/raw/master/Icons/PNG/Icons_Color-02.png"/>
                         <li>On rare occasions these medications may cause confusion or disorientation, and we advise you to discontinue these medications should these occur.</li>
+                        <img id="icon" src="https://github.com/whitstd/opioid-worksheet/raw/master/Icons/PNG/Icons_Color-15.png"/>
+                        <img id="icon" src="https://github.com/whitstd/opioid-worksheet/raw/master/Icons/PNG/Icons_Color-16.png"/>
+                        <img id="icon" src="https://github.com/whitstd/opioid-worksheet/raw/master/Icons/PNG/Icons_Color-09.png"/>
                     </ul>
                 </div>
             </div>
@@ -134,24 +143,12 @@
             <div id="footer"></div>
         </div>
         <div id="page2" class="hide">
-        <!--I. Text Box Front Page-->
-            <h2>Important Information:</h2>
-                <ul>
-                    <li>Use your medication <strong>only as prescribed</strong>. No more, nor more frequently.</li>
-                    <li>Take your medicine <strong>with food</strong>, don't take it with an empty stomach.</li>
-                    <li>Keep the medicine <strong>away from children</strong>. Protect your family! Keep it safe and locked.</li>
-                    <li>Once done with your medicine, <strong>dispose responsibly</strong> of anything that is <strong>leftover</strong>.</li>
-                    <li>Your prescription might <strong>change your mental acuity</strong>, so we suggest you:
-                        <ul>
-                            <li> <strong>Don't </strong>drive or operate heavy machinery under the effect of your prescribed drug</li>
-                            <li> <strong>Don't make </strong>important or <strong>life-changing decisions</strong>.</li>
-                            <li> <strong>Don't combine your medication with <strong>alcohol</strong>.</li>
-                        </ul>
-                    </li>
-                </ul>
 
+        <div id="header2"></div>
 <!--II. Text Box Page 2 on top-->
-            <h2>Responsible use of opioids.</h2>
+<div id="ResponsibleUse">
+                <h2 class="right">Responsible use of opioids</h2>
+                <div>
                 <ul>
                     <li> <strong>Don't take more</strong> medicine than the prescribed one, <strong>don't take it more frequently</strong> than instructed.</li> 
                     <li> <strong>Disclose</strong> all information about <strong>all the medicine you take</strong> or may take. Side effects can be worse under the influence of additional medicine. </li> 
@@ -161,9 +158,17 @@
                     <li> <strong>When you don’t need</strong> this medicine anymore, safely <strong>dispose of anything that is left over</strong>. Ask your doctor for a <strong>drop box location</strong>.</li> 
                     <li> As your <strong>pain eases, wait longer</strong> between each pill. </li> 
                 </ul>
+            </div>
+        </div>
+
+<div id="opioidfacts">
+    <div style="width:200px; font-size:80%; font-style:italic; text-align:center;"><img id="opfacts" src="https://github.com/whitstd/opioid-worksheet/raw/master/images/OpioidFacts2.png"/>Source : www.cdc.gov.in</div>
+</div>
 
 <!--III. Text Box Page 2, below (We did't talk about it but lets include this)-->
-            <h2>The following are common side effects:</h2>
+<div id="SideEffects">
+                <h2 class="right">Common side effects</h2>
+                <div>
                 <ul>
                     <li>Feeling sleepy or dizzy. </li>
                     <li>Itching, talk to your doctor if this happens to you.</li>
@@ -171,9 +176,17 @@
                     <li>Nausea/Vomiting.</li>
                     <li>Low Energy / Sex Drive</li>
                 </ul>
+            </div>
+        </div>
+
+        <div id="opioidfacts2">
+    <div style="width:image width px; font-size:80%; font-style:italic; text-align:center;"><img id="opfacts2" src="https://github.com/whitstd/opioid-worksheet/raw/master/images/OpioidFacts1.png"/>Source : National Institute on Drug Abuse via USA Today</div>
+</div>
 
 <!--IV. Text Box Page 2, below (We did't talk about it but I was thinking this may increase the drama)-->
-            <h2>OPIOID ADDICTION</h2>
+<div id="OpioidAddiction">
+                <h2 class="right">Opioid Addiction</h2>
+                <div>
             You are at a higher <strong>risk of developing dependence</strong> if you: 
             <ul>
                 <li> If you have experienced <strong>depression or anxiety</strong>.</li>
@@ -182,6 +195,15 @@
                 <li> If you take<strong> opioids for longer than 1 week</strong>.</li>
                 <li> Take <strong>more pills, more often, than</strong> your doctor <strong>prescribed</strong>. </li>
             </ul>
+        </div>
+    </div>
+    
+    <div id="emergency">
+    <p><img style="float: left; margin: -6px 12px -253px 99px;" src="https://github.com/whitstd/opioid-worksheet/raw/master/images/emergency.png" width="35" />Anyone can overdose. Please call 911 in case of emergencies.<br style="clear: both;" /></p>
+</div>
+
+
+    <div id="footer"></div>
 
         </div>
     </div>
