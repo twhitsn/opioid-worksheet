@@ -77,7 +77,9 @@ form h2{
     padding: .1in;
     top: 0;
     left: 0;
-    background-color: #0277BD;
+    background-image: url(https://github.com/whitstd/opioid-worksheet/raw/master/images/Artboard_f.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
     color: white;
 }
 
