@@ -265,6 +265,12 @@ form h2{
     margin-bottom: .05in;
 }
 
+#calendar #legend img{
+    height: .25in;
+    width: .25in;
+    margin-left: .05in;
+}
+
 #calendar #legend ul li:nth-child(1) div{
     background-color: #81C784;
 }
@@ -279,12 +285,18 @@ form h2{
 
 #calendar #prescription{
     position: absolute;
-    left: 4.5in;
+    margin-top: -.25in;
+    left: 5in;
     right: .25in;
 }
 
-#calendar #prescription h3{
-    color: #0277BD;
+#calendar #prescription h2{
+    color: #039BE5;
+}
+
+#calendar #prescription ul{
+    padding-left: .2in;
+    margin: .1in 0 0 0;
 }
 
 /************************************************************  
