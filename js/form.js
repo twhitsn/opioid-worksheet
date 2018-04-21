@@ -168,8 +168,16 @@ var form = (function(){
         will update with perc_refill field.
         */
         $('.updateText').each(function(i, item){
-            $item = $(item);
-            var formValue = selection[$item[0].classList[1]];
+            var $item = $(item);
+            var field = $item[0].classList[1]
+            var formValue = selection[field];
+            
+            if(field == 'prescriptionStartDate'){
+                var dateParts = formValue.split('-');
+                formValue = new Date(+dateParts[0], +dateParts[1] - 1, +dateParts[2]);
+                formValue = new Date(formValue).toDateString();
+            }
+            
             formValue = isNaN(formValue) ? formValue : Math.round(formValue);
             $item.text(formValue);
         });
