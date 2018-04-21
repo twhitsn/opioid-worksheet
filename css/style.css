@@ -163,8 +163,11 @@ form h2{
 }
 
 #refill > span{
-    width: 2.25in;
+    position: relative;
+    width: 2.5in;
     float: right;
+    top: -1.25in;
+    left: .25in;
 }
 
 #refillPerc{
