@@ -1,0 +1,178 @@
+/************************************************************  
+                            FORM 
+************************************************************/
+
+#formWrapper {
+    box-sizing: border-box;
+}
+
+form {
+  background: #f9f9f9;
+  border: 1px solid #c1c1c1;
+  margin-top: 0.4rem;
+  max-width: 400px;
+  padding: 1em;
+}
+
+form h2{
+    color: #0277BD;
+}
+
+form input {
+  margin-bottom: 1rem;
+  background: #fff;
+  border: 1px solid #9c9c9c;
+}
+
+button {
+  margin-top: 14px;
+  background: lightgrey;
+  padding: 0.7em;
+  border: 0;
+}
+
+button:hover {
+  background: #039BE5;
+}
+
+input:focus {
+  outline: 3px solid #039BE5;
+}
+
+/************************************************************  
+                            IMPORTANT INFO 
+************************************************************/
+
+#icon {
+  width: 0.60in;
+}
+
+/************************************************************  
+                            PAGE 2
+************************************************************/
+
+#page2{
+    position: relative;
+}
+
+#page2 > div{
+    position: absolute;
+    z-index: 1;
+}
+
+#page2 h2{
+    margin: 0;
+}
+
+#header2{
+    top: 0;
+    height: .5in;
+    width: 100%;
+    background-color: #039BE5;
+}
+
+#ResponsibleUse{
+    top: 0.7in;
+    left: 0.1in;
+    right: .25in;
+    width: 777px;
+    background-color: #E9E9E9;
+    padding: .1in;
+    border-radius: .1in;
+}
+
+#ResponsibleUse ul{
+    padding-left: .2in;
+    margin: 0;
+}
+
+#ResponsibleUse ul li:not(:last-child){
+    margin-bottom: .01in;
+}
+
+#page2 h2.right{
+    color: #039BE5;
+    padding: 0 0 .1in .1in;
+}
+
+
+#SideEffects{
+    top: 4.09in;
+    left: 4.1in;
+    right: .25in;
+    width: 393px;
+    background-color: #E9E9E9;
+    padding: .1in;
+    border-radius: .1in;
+}
+
+#SideEffects ul{
+    padding-left: .2in;
+    margin: 0;
+}
+
+#SideEffects ul li:not(:last-child){
+    margin-bottom: .01in;
+}
+
+#OpioidAddiction{
+    top: 6.64in;
+    left: 0.1in;
+    right: .25in;
+    width: 366px;
+    background-color: #E9E9E9;
+    padding: .1in;
+    border-radius: .1in;
+}
+
+#OpioidAddiction ul{
+    padding-left: .2in;
+    margin: 0;
+}
+
+#OpioidAddiction ul li:not(:last-child){
+    margin-bottom: .01in;
+}
+
+#opioidfacts{
+    top: 4.08in;
+    left: 0.10in;
+    right: .25in;
+    padding: .1in;
+}
+
+#opfacts{
+  width: 3.6in;
+    height: 2in;
+    padding: .025in;
+}
+
+#opioidfacts2{
+    top: 6.98in;
+    left: 4.1in;
+    right: .25in;
+    padding: .1in;
+}
+
+#opfacts2{
+  width: 4.2in;
+  height: 2in;
+    padding: .025in;
+}
+
+#emergency{
+  top: 9.8in;
+    left: 0.1in;
+    text-align: center;
+      font-size: 110%;
+      background-color: #0277BD;
+      width: 98%;
+      height: 5%;
+      border-radius: .1in;
+}
+
+#emergency p{
+  color: #FFFFFF;
+  font-weight: 900;
+  padding-bottom: 0.2in;
+}
