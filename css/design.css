@@ -75,7 +75,8 @@ input:focus {
     top: 0.7in;
     left: 0.1in;
     right: .25in;
-    width: 777px;
+    width: 749px;
+    margin-left: 16px;
     background-color: #E9E9E9;
     padding: .1in;
     border-radius: .1in;
@@ -100,7 +101,7 @@ input:focus {
     top: 4.09in;
     left: 4.1in;
     right: .25in;
-    width: 393px;
+    width: 383px;
     background-color: #E9E9E9;
     padding: .1in;
     border-radius: .1in;
@@ -119,7 +120,8 @@ input:focus {
     top: 6.64in;
     left: 0.1in;
     right: .25in;
-    width: 366px;
+    width: 344px;
+    margin-left: 16px;
     background-color: #E9E9E9;
     padding: .1in;
     border-radius: .1in;
@@ -136,7 +138,7 @@ input:focus {
 
 #opioidfacts{
     top: 4.08in;
-    left: 0.10in;
+    left: 0.14in;
     right: .25in;
     padding: .1in;
 }
@@ -149,7 +151,7 @@ input:focus {
 
 #opioidfacts2{
     top: 6.98in;
-    left: 4.1in;
+    left: 4.0in;
     right: .25in;
     padding: .1in;
 }
