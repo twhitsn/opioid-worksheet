@@ -22,14 +22,14 @@ Dr. Gabriel Brat
 - [X] Bring patient information and prescriber information inputs on the sheet.
 - [X] Include inputs to set how long the prescription lasts and make it noticeable in the calendar.
 - [ ] Label the border of the faces in the pain scale.
-- [ ] Second page fitting.
-- [ ] Second page include CDC illustrations.
-- [ ] Second page include CDC design.
+- [X] Second page fitting.
+- [X] Second page include CDC illustrations.
+- [X] Second page include CDC design.
+- [X] Remember to say D3 instead of Dj3 or 3djs (my favorite). 
 
 ## Potential Extensions
-- Include separately or in the same design the Physical Therapy illustrations.
-    - This would require creating a bank of images.
-- Often discharge sheets come with the exercises related to Physical Therapy. To include this, illlustrations, or similar visuals should be developed from a bank to be included in one of the available spaces of the Discharge Worksheet we are proposing. 
+- [ ] Include separately or in the same design the Physical Therapy illustrations.
+   - [ ] This would require creating a bank of images.
 - [ ] Error handling if incompatible fields are selected
 - [ ] Error handling - start date before current day
 - [ ] Timezone issues
