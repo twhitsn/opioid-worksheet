@@ -98,7 +98,7 @@ var calendar = (function(){
         var x = (d % _cellsPerRow) * _cellSize + ((d % _cellsPerRow) * _cellGap);
         var y = (Math.floor(d / _cellsPerRow) + 1) * _cellSize + (Math.floor(d / _cellsPerRow) * _cellGap) + _cellGap;
         
-        drawing.append('line')
+        /*drawing.append('line')
             .attr('stroke', 'black')
             .attr('x1', x + 'in')
             .attr('y1', y + 'in')
@@ -110,7 +110,14 @@ var calendar = (function(){
             .attr('x1', x + 'in')
             .attr('y1', y + _cellSize + 'in')
             .attr('x2', x + _cellSize + 'in')
-            .attr('y2', y + 'in')
+            .attr('y2', y + 'in')*/
+            
+        drawing.append('svg:image')
+            .attr('x', x + 'in')
+            .attr('y', y + 'in')
+            .attr('width', _cellSize + 'in')
+            .attr('height', _cellSize + 'in')
+            .attr('xlink:href', 'images/x.png')
     }
     
     return {
