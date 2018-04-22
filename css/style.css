@@ -224,7 +224,7 @@ form h2{
 
 #importantInfo{
     top: 5.0in;
-    left: 4.75in;
+    left: 4.5in;
     right: .25in;
     background-color: #E9E9E9;
     padding: .1in;
@@ -259,15 +259,10 @@ form h2{
     margin-left: .25in;
 }
 
-#calendar #legend{
-    position: absolute;
-    left: 2.5in;
-    top: .52in;
-}
-
 #calendar #legend ul{
     position: absolute;
     left: -1.5in;
+    top: .15in;
     padding-left: 0;
     margin: .25in 0 0 0;
     list-style-type: none;
@@ -282,7 +277,7 @@ form h2{
 }
 
 #calendar #legend ul li:not(:last-child){
-    margin-bottom: .05in;
+    margin-bottom: .15in;
 }
 
 #calendar #legend img{
@@ -291,16 +286,6 @@ form h2{
     width: .25in;
     margin-right: .1in;
 }
-
-/*#calendar #legend ul li span{
-    text-shadow: 1px 0px 1px #000000;
-}*/
-
-/*#calendar #legend ul li:nth-child(1) span{
-    color: #81C784;
-}*/
-
-
 
 #calendar #legend ul li div{
     float: left;
@@ -319,17 +304,9 @@ form h2{
     background-color: #E57373;
 }
 
-
-
-
-
-#calendar #legend i{
-    font-size: .3in;
-}
-
 #calendar #legend{
     position: absolute;
-    margin-top: -.45in;
+    margin-top: -.25in;
     left: 4.5in;
     right: .25in;
 }
