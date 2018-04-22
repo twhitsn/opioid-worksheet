@@ -1,12 +1,12 @@
 var form = (function(){
     // prescriptions with mme conversion
     var _prescriptions = {
-        'codeine': 0.15,
-        'hydrocodone': 1,
-        'hydromorphone': 4,
-        'morphine': 1,
-        'oxycodone': 1.5,
-        'oxymorphone': 3
+        'Codeine': 0.15,
+        'Hydrocodone': 1,
+        'Hydromorphone': 4,
+        'Morphine': 1,
+        'Oxycodone': 1.5,
+        'Oxymorphone': 3
     };
     
     var _defaultPatient = 'Patient X';

@@ -1,7 +1,7 @@
 # Personalized Post-Surgery Opioid Risk Mitigation and Teaching
 
 Live page [here](http://whitstd.github.io/opioid-worksheet)
-Live example [here](https://whitstd.github.io/opioid-worksheet/index.html?prescriberName=Dr.%20Cutty%20McOops&prescriberPhone=555-555-5555&surgery_bin=Appendectomy&approach=MIS&pre_surg_stat=Opioid%20Naive&hx_mh=TRUE&prescriptionDrug=oxycodone&prescriptionAmount=5&prescriptionPerDay=2&prescriptionStartDate=2018-04-18&prescriptionTotalDays=7)
+Live example [here](https://whitstd.github.io/opioid-worksheet/index.html?prescriberName=Dr.%20Cutty%20McOops&prescriberPhone=555-555-5555&surgery_bin=Appendectomy&approach=MIS&pre_surg_stat=Opioid%20Naive&hx_mh=TRUE&prescriptionDrug=Oxycodone&prescriptionAmount=5&prescriptionPerDay=2&prescriptionStartDate=2018-04-18&prescriptionTotalDays=7)
 
 ## Project Client
 
@@ -9,7 +9,7 @@ Dr. Gabriel Brat
 
 ## Authors
 
-- Himani Bhatt  @himbhatt
+- Himani Bhatt @himbhatt
 - Felipe Lozano @flozanor82
 - Neha Rawat @Neha41093
 - Tim Whitson @whitstd
