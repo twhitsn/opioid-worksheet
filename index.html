@@ -25,13 +25,13 @@
         <form id="worksheetInput">
             <div>
                 <h2>Patient Information</h2>
-                Name <input id="patientName" type="text" name="patientName"/>
+                <label><span>Name </span><input id="patientName" type="text" name="patientName"/></label>
             </div>
             <div>
                 <h2>Prescriber Information</h2>
-                <label>Name <input id="prescriberName" type="text" name="prescriberName"/></label>
-                <label>Phone <input id="prescriberPhone" type="text" name="prescriberPhone"/></label>
-            </div>
+                <label><span>Name</span> <input id="prescriberName" type="text" name="prescriberName"/></label>
+                <label> <span>Phone</span><input id="prescriberPhone" type="text" name="prescriberPhone"/></label>
+            </div> 
             <div>
                 <h2>Surgery Type</h2>
                 <select id="surgery_bin_select" name="surgery_bin">
@@ -44,9 +44,9 @@
             </div>
             <div>
                 <h2>Opioid Status</h2>
-                <label><input type="radio" name="pre_surg_stat" value="Opioid Naive" required="required">Opioid Naive</label>
-                <label><input type="radio" name="pre_surg_stat" value="Opioid Exposed" required="required">Opioid Exposed</label>
-                <label><input type="radio" name="pre_surg_stat" value="Opioid Misuse" required="required">Opioid Misuse</label>
+                <label><input type="radio" name="pre_surg_stat" value="Opioid Naive" required="required">Opioid Naive </label>
+                <label><input type="radio" name="pre_surg_stat" value="Opioid Exposed" required="required">Opioid Exposed </label>
+                <label><input type="radio" name="pre_surg_stat" value="Opioid Misuse" required="required">Opioid Misuse </label>
             </div>
             <div>
                 <h2>History of Mental Health Dx</h2>
@@ -55,11 +55,11 @@
             </div>
             <div>
                 <h2>Prescription</h2>
-                <select id="prescriptionDrug" name="prescriptionDrug"></select>
-                <label>Dosage weight <input id="prescriptionAmount" type="text" name="prescriptionAmount" required=""> mg</label>
-                <label>Pills per day <input id="prescriptionPerDay" type="text" name="prescriptionPerDay" required=""> pills</label>
-                <label>Start date <input id="prescriptionStartDate" type="date" name="prescriptionStartDate" required=""></label>
-                <label>Total Days <input id="prescriptionTotalDays" type="text" name="prescriptionTotalDays" required=""></label>
+                <label class="drug"><span>Drug Type</span><select id="prescriptionDrug" name="prescriptionDrug"></select></label>
+                <label><span>Dosage weight</span><input id="prescriptionAmount" type="text" name="prescriptionAmount" required=""> mg</label>
+                <label><span>Pills per day</span><input id="prescriptionPerDay" type="text" name="prescriptionPerDay" required=""> pills</label>
+                <label><span>Start date</span><input id="prescriptionStartDate" type="date" name="prescriptionStartDate" required=""></label>
+                <label><span>Total Days</span><input id="prescriptionTotalDays" type="text" name="prescriptionTotalDays" required=""></label>
             </div>
         </form>
         
