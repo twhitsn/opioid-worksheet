@@ -18,6 +18,20 @@ form h2{
     color: #0277BD;
 }
 
+form label{
+  width: 4.5in;
+  display: block;
+}
+
+.drug{
+  padding-bottom: 0.1in;
+}
+
+form span{
+  display: inline-block;
+  width: 1.5in;
+}
+
 form input {
   margin-bottom: 1rem;
   background: #fff;
