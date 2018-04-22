@@ -146,7 +146,7 @@ form h2{
 }
 
 #visuals > div{
-    width: 3.5in;
+    width: 4in;
 }
 
 /************************************************************  
@@ -157,8 +157,19 @@ form h2{
     width: 3.5in;
 }
 
+#refill ul{
+    position: absolute;
+    margin-top: -.3in;
+    left: 1in;
+}
+
+#refill ul li{
+    margin-bottom: .1in;
+}
+
 #refill img{
     height: 1.5in;
+    margin-top: .25in;
     float: left;
 }
 
@@ -173,7 +184,7 @@ form h2{
 #refillPerc{
     position: relative;
     left: -.78in;
-    top: .58in;
+    top: .82in;
     font-size: .30in;
 }
 
@@ -184,7 +195,7 @@ form h2{
 #pain{
     position: absolute;
     clear: both;
-    top: 2.5in;
+    top: 2.85in;
 }
 
 #pain img{
@@ -255,6 +266,10 @@ form h2{
 }
 
 #calendar #legend ul{
+    position: absolute;
+    left: -1.5in;
+    padding-left: 0;
+    margin: .25in 0 0 0;
     list-style-type: none;
 }
 
@@ -266,19 +281,30 @@ form h2{
     text-align: center;
 }
 
-#calendar #legend ul li{
+#calendar #legend ul li:not(:last-child){
     margin-bottom: .05in;
 }
 
 #calendar #legend img{
+    float: left;
     height: .25in;
     width: .25in;
-    margin-left: .05in;
+    margin-right: .1in;
 }
 
-#calendar #legend span{
-    width: .5in;
-    display: inline-block;
+/*#calendar #legend ul li span{
+    text-shadow: 1px 0px 1px #000000;
+}*/
+
+/*#calendar #legend ul li:nth-child(1) span{
+    color: #81C784;
+}*/
+
+
+
+#calendar #legend ul li div{
+    float: left;
+    margin-right: .1in;
 }
 
 #calendar #legend ul li:nth-child(1) div{
@@ -293,28 +319,23 @@ form h2{
     background-color: #E57373;
 }
 
+
+
+
+
 #calendar #legend i{
     font-size: .3in;
 }
 
-#calendar #prescription{
+#calendar #legend{
     position: absolute;
-    margin-top: -.25in;
+    margin-top: -.45in;
     left: 4.5in;
     right: .25in;
 }
 
-#calendar #prescription h2{
+#calendar #legend h2{
     color: #039BE5;
-}
-
-#calendar #prescription ul{
-    padding-left: .2in;
-    margin: .1in 0 0 0;
-}
-
-#calendar #prescription ul li:not(:last-child){
-    margin-bottom: .1in;
 }
 
 /************************************************************  

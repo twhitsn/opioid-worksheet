@@ -89,34 +89,37 @@
             
             <div id="calendar">
                 <h2 class="left">Dosage Tracker</h2>
-                <div id="legend">
+                <!--<div id="legend">
                     <ul>
                         <li><span><img src='images/check.png' /></span> Safe</li>
                         <li><span><img src='images/warning.png' /></span> Warning</li>
                         <li><span><img src='images/pain-legend.png' /></span> High Risk</li>
                         <li><span><img src='images/x.png' /></span> End Rx</li>
                     </ul>
-                </div>
-                <div id="prescription">
-                    <h2>Prescription</h2>
+                </div>-->
+                <div id="legend">
                     <ul>
-                        <li>
-                            <span class="updateText prescriptionDrug"></span> <span class="updateText prescriptionAmount"></span>mg <span class="updateText prescriptionPerDay"></span>x per day
-                        </li>
-                        <li>
-                            Your prescription starts on <span class="updateText prescriptionStartDate"></span> and lasts for <span class="updateText prescriptionTotalDays"></span></span> days.
-                        </li>
-                        <li>Please remember: You can finish your prescription. However, you are always free to take <strong>less</strong>.</li>
+                        <li><div></div>It is safe to continue your medication. Risk for opioid addiction is <strong>low</strong>.</li>
+                        <li><div></div>You should plan to stop your medication. Risk for opioid addiction becomes <strong>moderate</strong>.</li>
+                        <li><div></div>At this point, most people stop taking their medication. Risk for opioid addiction becomes <strong>high</strong>.</li>
+                        <li><span><img src='images/x.png' /></span> End Prescription</li>
                     </ul>
                 </div>
             </div>
             
             <div id="visuals">
                 <div id="refill">
-                    <h2 class="left">Refill Information</h2>
+                    <h2 class="left">Prescription Information</h2>
                     <img src="images/Bottles_V02-01.png"/>
                     <div id="refillPerc" class="updateText perc_refill">0</div>
-                    <span><span class="updateText perc_refill"></span>% of patients needed a refill on their prescriptions after finishing their <span class="updateText surgery_bin"></span> medication.</span>
+                    <ul>
+                        <li>
+                            <span class="updateText prescriptionDrug"></span> <span class="updateText prescriptionAmount"></span>mg <span class="updateText prescriptionPerDay"></span>x per day
+                        </li>
+                        <li>Please remember: You can finish your prescription. However, you are always free to take <strong>less</strong>.</li>
+                        <li><span><span class="updateText perc_refill"></span>% of patients needed a refill on their prescriptions after finishing their medication.</span></li>
+                    </ul>
+                    
                 </div>
                 <div id="pain">
                     <h2 class="left">Pain Scale</h2>
