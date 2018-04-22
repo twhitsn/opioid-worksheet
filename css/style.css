@@ -276,6 +276,11 @@ form h2{
     margin-left: .05in;
 }
 
+#calendar #legend span{
+    width: .5in;
+    display: inline-block;
+}
+
 #calendar #legend ul li:nth-child(1) div{
     background-color: #81C784;
 }
@@ -288,10 +293,14 @@ form h2{
     background-color: #E57373;
 }
 
+#calendar #legend i{
+    font-size: .3in;
+}
+
 #calendar #prescription{
     position: absolute;
     margin-top: -.25in;
-    left: 4.9in;
+    left: 4.5in;
     right: .25in;
 }
 
@@ -376,7 +385,7 @@ h2.left:before{
 
 #page1 h2.right{
     color: #039BE5;
-    padding: 0 0 .1in .1in;
+    padding: 0 0 .1in .2in;
 }
 
 #page1 h2.left{
