@@ -181,6 +181,20 @@ var form = (function(){
             formValue = isNaN(formValue) ? formValue : Math.round(formValue);
             $item.text(formValue);
         });
+        
+        $('.refill_bin').each(function(i, element){
+            var perc_refill = selection['perc_refill'];
+            
+            if(perc_refill < 10){
+                var text = 'Small minority of';
+            } else if(perc_refill <= 20){
+                var text = 'Minority of';
+            } else{
+                var text = 'Some';
+            }
+
+            $(element).text(text);
+        });
     }
     
     function _clearText(){
