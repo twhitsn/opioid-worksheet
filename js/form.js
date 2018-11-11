@@ -186,9 +186,9 @@ var form = (function(){
             var perc_refill = selection['perc_refill'];
             
             if(perc_refill < 10){
-                var text = 'Small minority of';
+                var text = 'A small minority of';
             } else if(perc_refill <= 20){
-                var text = 'Minority of';
+                var text = 'A minority of';
             } else{
                 var text = 'Some';
             }
