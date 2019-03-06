@@ -16,6 +16,10 @@ Dr. Gabriel Brat
 - Live page [here](http://whitstd.github.io/opioid-worksheet)
 - Live example (filled in) [here](https://whitstd.github.io/opioid-worksheet/index.html?prescriberName=Dr.%20Cutty%20McOops&prescriberPhone=555-555-5555&surgery_bin=Appendectomy&approach=MIS&pre_surg_stat=Opioid%20Naive&hx_mh=TRUE&prescriptionDrug=Oxycodone&prescriptionAmount=5&prescriptionPerDay=2&prescriptionStartDate=2018-04-23&prescriptionTotalDays=7)
 
+## Note
+
+This project is only temporarily hosted on GitHub. In the future, it will be integrated with a Shiny (R) server. The form currently can break when unavailable data is selected, but this will be fixed upon integration.
+
 ## To-do
 
 - [X] Make "approach" dependent upon surgery type in form
