@@ -1,127 +1,107 @@
-var calendar = (function(){
-    var _days = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
+'use strict';
 
-    var _colors = [
-        '#424242', // gray
-        '#81C784', // green
-        '#FFF176', // yellow
-        '#E57373' // red
-    ];
-    
-    var _calWidth = '6in';
-    
-    // gap between days (inches)
-    var _cellGap = 0.1,
-        _calGap = 0.25;
+class Calendar {
+    constructor(){
+        this.days = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
 
-    var _cellsPerRow = 7,
-        _cellsPerCol = 4,
-        _numCells = 56;
+        this.colors = [
+            '#424242', // gray
+            '#81C784', // green
+            '#FFF176', // yellow
+            '#E57373' // red
+        ];
 
-    // calendar sizing
-    var _cellSize = 0.25;
-    
-    var _calendar = null;
-    
-    function init(){
-        _calendar = d3.select('#calendar');
+        this.calWidth = '6in';
+
+        // gap between days (inches)
+        this.cellGap = 0.1;
+        this.calGap = 0.25;
+
+        this.cellsPerRow = 7;
+        this.cellsPerCol = 4;
+        this.numCells = 56;
+
+        // calendar sizing
+        this.cellSize = 0.25;
+
+        this.calendar = d3.select('#calendar');
     }
-    
-    function drawAll(selection, prescriptions){
-        var mmePerDay = prescriptions[selection.prescriptionDrug] * selection.prescriptionAmount * selection.prescriptionPerDay;
-        var offsetDays = new Date($('#prescriptionStartDate').val()).getDay();
-        
-        _clear(); // clear old svg
-        
-        var svg = _calendar.append('svg')
-            .attr('width', _calWidth); //FIXME; arbitrary
 
-        _drawOne(0, svg, selection, mmePerDay, offsetDays);
+    drawAll(selection, prescriptions){
+        const mmePerDay = prescriptions[selection.prescriptionDrug] * selection.prescriptionAmount * selection.prescriptionPerDay;
+        const offsetDays = new Date($('#prescriptionStartDate').val()).getDay();
+
+        this.clear(); // clear old svg
+
+        const svg = this.calendar.append('svg')
+            .attr('width', this.calWidth); //FIXME; arbitrary
+
+        this.drawOne(0, svg, selection, mmePerDay, offsetDays);
     }
-    
-    function _clear(){
-        _calendar.selectAll('svg').remove();
+
+    clear(){
+        this.calendar.selectAll('svg').remove();
     }
-    
-    function _drawOne(calIndex, svg, selection, mmePerDay, offsetDays){
-        var startX = calIndex ? _calGap + _cellSize * _cellsPerRow + _cellGap * _cellsPerRow : 0;
-        var drawing = svg.append('g')
+
+    drawOne(calIndex, svg, selection, mmePerDay, offsetDays){
+        const startX = calIndex ? this.calGap + this.cellSize * this.cellsPerRow + this.cellGap * this.cellsPerRow : 0;
+        const drawing = svg.append('g');
 
         drawing.selectAll('text')
             .data(function(d){ return Array.apply(null, {length: 7}).map(Number.call, Number); }) // create array from start - finish for calendar
             .enter().append('text')
                 .attr('stroke', 'black')
-                .attr('x', function(d){ return String(startX + (d % _cellsPerRow) * _cellSize + ((d % _cellsPerRow) * _cellGap) + _cellSize / 2) + 'in'; })
-                .attr('y', function(d){ return '.25in'; })
+                .attr('x', (d) => { return String(startX + (d % this.cellsPerRow) * this.cellSize + ((d % this.cellsPerRow) * this.cellGap) + this.cellSize / 2) + 'in'; })
+                .attr('y', (d) => { return '.25in'; })
                 .attr('text-anchor', 'middle')
-                .text(function(d){
-                    return _days[d];
-                });
-                
+                .text((d) => { return this.days[d];
+             });
+
         drawing.selectAll('rect')
-            .data(function(d){ return Array.apply(null, {length: _numCells / 2}).map(Number.call, Number); }) // create array from start - finish for calendar
+            .data((d) => { return Array.apply(null, {length: this.numCells / 2}).map(Number.call, Number); }) // create array from start - finish for calendar
             .enter().append('rect')
-                .attr('width', _cellSize + 'in')
-                .attr('height', _cellSize + 'in')
-                .attr('x', function(d){ return String(startX + (d % _cellsPerRow) * _cellSize + ((d % _cellsPerRow) * _cellGap)) + 'in'; })
-                .attr('y', function(d){ return String((Math.floor(d / _cellsPerRow) + 1) * _cellSize + (Math.floor(d / _cellsPerRow) * _cellGap) + _cellGap) + 'in'; });
-                
+                .attr('width', this.cellSize + 'in')
+                .attr('height', this.cellSize + 'in')
+                .attr('x', (d) => { return String(startX + (d % this.cellsPerRow) * this.cellSize + ((d % this.cellsPerRow) * this.cellGap)) + 'in'; })
+                .attr('y', (d) => { return String((Math.floor(d / this.cellsPerRow) + 1) * this.cellSize + (Math.floor(d / this.cellsPerRow) * this.cellGap) + this.cellGap) + 'in'; });
+
         svg.attr('height', 180); //FIXME: arbitrary
 
-        _calendar.selectAll('rect')
-            .attr('stroke', function(d, i, n){
+        this.calendar.selectAll('rect')
+            .attr('stroke', (d, i, n) => {
                 i = i - offsetDays;
-                
+
                 if(i < 0){
                     return 'transparent';
                 } else{
-                    return _colors[0];
+                    return this.colors[0];
                 }
             })
-            .attr('fill', function(d, i, n){
+            .attr('fill', (d, i, n) => {
                 i = i - offsetDays;
                 var curMme = i * mmePerDay;
-                
+
                 if(i < 0){
                     return 'transparent';
                 }else if(curMme < selection.median_taken){
-                    return _colors[1];
+                    return this.colors[1];
                 } else if(curMme < selection.q3_taken){
-                    return _colors[2];
+                    return this.colors[2];
                 } else{
-                    return _colors[3];
+                    return this.colors[3];
                 }
             });
-            
+
         // X marks the spot... for where the prescription ends
-        var d = +selection.prescriptionTotalDays + offsetDays - 1;
-        var x = (d % _cellsPerRow) * _cellSize + ((d % _cellsPerRow) * _cellGap);
-        var y = (Math.floor(d / _cellsPerRow) + 1) * _cellSize + (Math.floor(d / _cellsPerRow) * _cellGap) + _cellGap;
-        
-        /*drawing.append('line')
-            .attr('stroke', 'black')
-            .attr('x1', x + 'in')
-            .attr('y1', y + 'in')
-            .attr('x2', x + _cellSize + 'in')
-            .attr('y2', y + _cellSize + 'in')
-            
-        drawing.append('line')
-            .attr('stroke', 'black')
-            .attr('x1', x + 'in')
-            .attr('y1', y + _cellSize + 'in')
-            .attr('x2', x + _cellSize + 'in')
-            .attr('y2', y + 'in')*/
-            
+        const d = +selection.prescriptionTotalDays + offsetDays - 1;
+        const x = (d % this.cellsPerRow) * this.cellSize + ((d % this.cellsPerRow) * this.cellGap);
+        const y = (Math.floor(d / this.cellsPerRow) + 1) * this.cellSize + (Math.floor(d / this.cellsPerRow) * this.cellGap) + this.cellGap;
+
         drawing.append('svg:image')
             .attr('x', x + 'in')
             .attr('y', y + 'in')
-            .attr('width', _cellSize + 'in')
-            .attr('height', _cellSize + 'in')
+            .attr('width', this.cellSize + 'in')
+            .attr('height', this.cellSize + 'in')
             .attr('xlink:href', 'images/x.png')
     }
-    
-    return {
-        init: init,
-        drawAll: drawAll
-    };
-})();
+}

@@ -1,12 +1,12 @@
+'use strict';
+
 // on document load
 $(function(){
-    form.init();
-    calendar.init();
-    pain.init();
+    const form = new Form();
 
     d3.csv('https://raw.githubusercontent.com/whitstd/opioid-worksheet/master/aggregate_opioid.csv', function(data){
-        convert = ['n', 'median_taken', 'q1_taken', 'q3_taken', 'perc_pain_int', 'perc_refill'];
-        for(var i = 0, imax = convert.length; i < imax; i++){
+        let convert = ['n', 'median_taken', 'q1_taken', 'q3_taken', 'perc_pain_int', 'perc_refill'];
+        for(let i = 0, imax = convert.length; i < imax; i++){
             data[convert[i]] = +data[convert[i]];
         }
         return data; //promise
