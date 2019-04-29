@@ -13,8 +13,8 @@ Dr. Gabriel Brat
 
 ## Link to Live Page
 
-- Live page [here](http://whitstd.github.io/opioid-worksheet)
-- Live example (filled in) [here](https://whitstd.github.io/opioid-worksheet/index.html?prescriberName=Dr.%20Cutty%20McOops&prescriberPhone=555-555-5555&surgery_bin=Appendectomy&approach=MIS&pre_surg_stat=Opioid%20Naive&hx_mh=TRUE&prescriptionDrug=Oxycodone&prescriptionAmount=5&prescriptionPerDay=2&prescriptionStartDate=2018-04-23&prescriptionTotalDays=7)
+- Live page [here](http://twhitsn.github.io/opioid-worksheet)
+- Live example (filled in) [here](https://twhitsn.github.io/opioid-worksheet/index.html?prescriberName=Dr.%20Cutty%20McOops&prescriberPhone=555-555-5555&surgery_bin=Appendectomy&approach=MIS&pre_surg_stat=Opioid%20Naive&hx_mh=TRUE&prescriptionDrug=Oxycodone&prescriptionAmount=5&prescriptionPerDay=2&prescriptionStartDate=2018-04-23&prescriptionTotalDays=7)
 
 ## Note
 
